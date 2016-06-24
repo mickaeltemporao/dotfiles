@@ -5,19 +5,20 @@ call plug#begin('~/.config/nvim/autoload')
 
 " Make sure you use single quotes
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
 Plug 'yegappan/mru'
 
 " Add plugins to &runtimepath
@@ -67,6 +68,10 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#ctrlp#color_template = 'insert'
 let g:airline#extensions#tmuxline#enabled = 1
+
+" Icons
+set guifont=<FONT_NAME>:h<FONT_SIZE>
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 "Recognize Tex Files
 let g:tex_flavor='latex'
