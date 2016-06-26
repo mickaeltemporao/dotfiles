@@ -1,33 +1,49 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim File
+" ------------------------------------------------------------------------------
+" Title:        Vim Configuration
+" Filename:     init.vim
+" Description:  Configuration File for Vim & NeoVim
+" Version:      0.0.0.001
+" Created:      2015-11-19 14:33:31
+" Modified:     2016-06-26 15:29:19
+" Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
+" ------------------------------------------------------------------------------
+" Copyright (C) 2016 Mickael Temporão
+" Licensed under the GPL-2 < https://www.gnu.org/licenses/gpl-2.0.txt >
+" ------------------------------------------------------------------------------
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins handled with vim-plug
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/autoload')
 
 " Make sure you use single quotes
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yegappan/mru'
+Plug 'vim-scripts/header.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map leader to space bar
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
@@ -40,9 +56,9 @@ nmap <leader>w :w!<cr>
 command W w !sudo tee % > /dev/null
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Show line numbers
 set number
 
@@ -105,9 +121,9 @@ set magic
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing <leader> ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -118,9 +134,9 @@ map <leader>sa zg
 map <leader>s? z=
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
 
@@ -128,9 +144,9 @@ map <leader>q :e ~/buffer<cr>
 map <leader>x :e ~/buffer.md<cr>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Custom Functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Toggle Spelling On/Off & Switch
 function! ToggleSpellLang()
     " toggle between en and fr
@@ -185,3 +201,12 @@ function! s:RemoveDiacritics(line1, line2)
   call setline(a:line1, split(tr(all, diacs, repls), "\n"))
 endfunction
 command! -range=% RemoveDiacritics call s:RemoveDiacritics(<line1>, <line2>)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins Configurations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" => vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
