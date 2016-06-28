@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-06-28 13:08:41
+" Modified:     2016-06-28 13:10:24
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
