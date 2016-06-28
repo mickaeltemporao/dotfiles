@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-06-28 13:44:09
+" Modified:     2016-06-28 14:11:59
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -25,6 +25,7 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
@@ -65,6 +66,7 @@ command W w !sudo tee % > /dev/null
 set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swp//
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,16 +86,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme gruvbox
 set background=dark    " Setting dark mode
 
-" Airline configuration
-set laststatus=2
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#ctrlp#color_template = 'insert'
-let g:airline#extensions#tmuxline#enabled = 1
-
 " Icons
 set guifont=<FONT_NAME>:h<FONT_SIZE>
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
@@ -101,32 +93,16 @@ set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 "Recognize Tex Files
 let g:tex_flavor='latex'
 
-" Disable underscore shortcut in Nvim-R
-let R_assign = 0
-
-"R Code linter
-let g:syntastic_enable_r_lintr_checker = ['lintr']
-let g:syntastic_r_checkers = 1
-
-"R Tabulation Behaviour
-autocmd FileType R setlocal shiftwidth=2 tabstop=2
-
 "Yank path command with leader cp"
 nnoremap <silent> cp :let @*=expand("%:p")<CR>
-
-"FuGitive status line
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "Height of Command line area
 set cmdheight=1
 
-"LanguageTool Setup
-let g:languagetool_jar='/usr/local/Cellar/languagetool/3.2/libexec/languagetool-commandline.jar'
-
 " For regular expressions turn magic on
 set magic
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Always use the systme clipboard
@@ -193,6 +169,9 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
 
@@ -259,10 +238,75 @@ endfunction
 command! -range=% RemoveDiacritics call s:RemoveDiacritics(<line1>, <line2>)
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fast editing and reloading of vimrc configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>e :e! ~/.config/nvim/init.vim<cr>
+autocmd! bufwritepost vimrc source ~/.config/nvim/init.vim
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Turn persistent undo on
+"    means that you can undo even when you close a buffer/VIM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+try
+    set undodir=~/.config/nvim/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Configurations
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" => vim-expand-region
+" vim-expand-region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" Airline configuration
+set laststatus=2
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#tmuxline#enabled = 1
+
+" Disable underscore shortcut in Nvim-R
+let R_assign = 0
+
+"R Code linter
+"let g:neomake_javascript_enabled_makers = ['jshint']
+"let g:syntastic_enable_r_lintr_checker = ['lintr']
+"let g:syntastic_r_checkers = 1
+
+"R Tabulation Behaviour
+"autocmd FileType R setlocal shiftwidth=2 tabstop=2
+
+"FuGitive status line
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+"LanguageTool Setup
+let g:languagetool_jar='/usr/local/Cellar/languagetool/3.2/libexec/languagetool-commandline.jar'
+
+" bufExplorer plugin
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='name'
+map <leader>o :BufExplorer<cr>
+
+" MRU plugin
+let MRU_Max_Entries = 400
+map <leader>f :MRU<CR>
+
+" Nerd Tree
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr>
