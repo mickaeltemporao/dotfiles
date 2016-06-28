@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-06-26 15:29:49
+" Modified:     2016-06-28 08:48:06
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -20,6 +20,7 @@ call plug#begin('~/.config/nvim/autoload')
 " Make sure you use single quotes
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
@@ -120,6 +121,8 @@ set magic
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Always use the systme clipboard
+set clipboard+=unnamedplus
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
