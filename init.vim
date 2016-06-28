@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-06-28 08:48:06
+" Modified:     2016-06-28 12:47:15
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -24,6 +24,7 @@ Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
@@ -31,12 +32,15 @@ Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Shougo/deoplete.nvim'
+Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yegappan/mru'
 Plug 'vim-scripts/header.vim'
+
 
 " Add plugins to &runtimepath
 call plug#end()
