@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-06-28 14:11:59
+" Modified:     2016-07-14 16:39:19
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -19,7 +19,8 @@ call plug#begin('~/.config/nvim/autoload')
 
 " Make sure you use single quotes
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -29,7 +30,6 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
-Plug 'morhetz/gruvbox'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'ryanoasis/vim-devicons'
@@ -66,6 +66,9 @@ command W w !sudo tee % > /dev/null
 set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swp//
 
+" Case Insensitive search
+set ignorecase
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -83,8 +86,8 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Enable gruvbox colorscheme
-colorscheme gruvbox
 set background=dark    " Setting dark mode
+colorscheme gruvbox
 
 " Icons
 set guifont=<FONT_NAME>:h<FONT_SIZE>
@@ -98,6 +101,11 @@ nnoremap <silent> cp :let @*=expand("%:p")<CR>
 
 "Height of Command line area
 set cmdheight=1
+
+" Word wrap without line breaks
+set wrap
+set linebreak
+set nolist  " list disables linebreak
 
 " For regular expressions turn magic on
 set magic
@@ -129,12 +137,6 @@ map k gk
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
