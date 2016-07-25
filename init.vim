@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-07-14 16:39:19
+" Modified:     2016-07-25 08:42:00
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -26,7 +26,6 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
@@ -40,7 +39,6 @@ Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'yegappan/mru'
 Plug 'vim-scripts/header.vim'
 
 
@@ -293,16 +291,11 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 "LanguageTool Setup
 let g:languagetool_jar='/usr/local/Cellar/languagetool/3.2/libexec/languagetool-commandline.jar'
 
-" bufExplorer plugin
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-
-" MRU plugin
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+" ctrlP
+" Open buffer menu
+nnoremap <Leader>o :CtrlPBuffer<CR>
+" Open most recently used files
+nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " Nerd Tree
 let g:NERDTreeWinPos = "right"
