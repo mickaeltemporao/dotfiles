@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-07-27 20:16:31
+" Modified:     2016-07-30 17:00:47
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -26,6 +26,7 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
+Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
@@ -83,9 +84,9 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " Enable true color
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" Enable gruvbox colorscheme
+" Set colorscheme
 set background=dark    " Setting dark mode
-colorscheme gruvbox
+colorscheme solarized
 
 " Icons
 set guifont=<FONT_NAME>:h<FONT_SIZE>
@@ -269,7 +270,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " Airline configuration
 set laststatus=2
-let g:airline_theme='gruvbox'
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
