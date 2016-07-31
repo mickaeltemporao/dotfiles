@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-07-30 17:00:47
+" Modified:     2016-07-31 11:17:44
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -41,7 +41,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/header.vim'
-
+Plug 'vim-scripts/LanguageTool'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -67,6 +67,9 @@ set directory=~/.config/nvim/swp//
 
 " Case Insensitive search
 set ignorecase
+
+" Buffer Switch without saving
+set hidden
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,13 +144,22 @@ map <silent> <leader><cr> :noh<cr>
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
-map <leader>ba :bufdo bd<cr>
-
+" map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
+" Mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+
+" Opens a new split with terminal
+map <leader>vt :vsp <cr>:term<cr>
+
+" Opens a new window with terminal
+map <leader>tt :tabedit<cr>:term<cr>
+
 " Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
