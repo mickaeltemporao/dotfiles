@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-08-12 11:20:03
+" Modified:     2016-08-17 16:59:25
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -290,17 +290,6 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#ctrlp#color_template = 'insert'
 let g:airline#extensions#tmuxline#enabled = 1
 
-" Disable underscore shortcut in Nvim-R
-let R_assign = 0
-
-"R Code linter
-"let g:neomake_javascript_enabled_makers = ['jshint']
-"let g:syntastic_enable_r_lintr_checker = ['lintr']
-"let g:syntastic_r_checkers = 1
-
-"R Tabulation Behaviour
-"autocmd FileType R setlocal shiftwidth=2 tabstop=2
-
 "FuGitive status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -321,6 +310,18 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Setting up the R environnment
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: Fix R Tabulation Behaviour for Neovim
+"TODO: R Code linter
+
+" Disable underscore shortcut in Nvim-R
+let R_assign = 0
+
+" Set R Tabulation Behaviour
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
