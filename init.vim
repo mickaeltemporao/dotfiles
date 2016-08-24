@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-08-22 16:49:51
+" Modified:     2016-08-23 22:58:32
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -29,10 +29,13 @@ Plug 'honza/vim-snippets'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
-"Plug 'lervag/vimtex'
-Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex'
+" Plug 'vim-latex/vim-latex'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Shougo/deoplete.nvim'
@@ -42,7 +45,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'vim-scripts/header.vim'
+Plug 'vim-scripts/header.vim'
 Plug 'vim-scripts/LanguageTool'
 
 " Add plugins to &runtimepath
@@ -97,8 +100,14 @@ colorscheme solarized
 set guifont=<FONT_NAME>:h<FONT_SIZE>
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
-"Recognize Tex Files
-let g:tex_flavor='latex'
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'" IMPORTANT: grep will sometimes skip displaying the file name if you
+
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
 
 "Yank path command with leader cp"
 nnoremap <silent> cp :let @*=expand("%:p")<CR>
