@@ -5,7 +5,7 @@
 # Description:  List of R Packages mostly used for Data Science Tasks
 # Version:      0.0.0.001
 # Created:      2016-05-12 07:08:19
-# Modified:     2016-08-12 17:20:22
+# Modified:     2016-08-24 20:36:00
 # Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 # ------------------------------------------------------------------------------
 # Copyright (C) 2016 Mickael Temporão
@@ -49,6 +49,7 @@ git_packages <- c(
   "RcppCore/Rcpp",
   "RcppCore/RcppEigen",
   "Rdatatable/data.table",
+  "rstudio/rmarkdown",
   "robjhyndman/forecast",
   "stefvanbuuren/mice",
   "topepo/caret/pkg/caret"
