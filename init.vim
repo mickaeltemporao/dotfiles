@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-08-24 20:46:19
+" Modified:     2016-08-25 12:59:45
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/autoload')
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
-" Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
