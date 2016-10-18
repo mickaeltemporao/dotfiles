@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-10-18 07:21:04
+" Modified:     2016-10-18 07:32:44
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -206,6 +206,8 @@ map <leader>q :e ~/buffer.md<cr>
 " Quickly open a markdown buffer for scribble
 map <leader>x :e ~/buffer<cr>
 
+" Create the 'tags' file (requires ctags ? brew install ctags)
+command! MakeTags !ctags -R .
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Custom Functions
