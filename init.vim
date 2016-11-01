@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-10-18 07:32:44
+" Modified:     2016-10-19 16:37:07
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -31,6 +31,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 " Plug 'vim-latex/vim-latex'
+Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-pandoc/vim-pandoc'
