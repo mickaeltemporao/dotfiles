@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-10-19 16:37:07
+" Modified:     2016-11-12 22:00:14
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -48,6 +48,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/header.vim'
 Plug 'vim-scripts/LanguageTool'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -202,10 +203,10 @@ map <leader>s? z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer.md<cr>
+map <leader>q :e ~/Desktop/buffer.md<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer<cr>
+map <leader>x :e ~/Desktop/buffer.R<cr>
 
 " Create the 'tags' file (requires ctags ? brew install ctags)
 command! MakeTags !ctags -R .
