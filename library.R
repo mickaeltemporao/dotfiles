@@ -5,7 +5,7 @@
 # Description:  List of R Packages mostly used for Data Science Tasks
 # Version:      0.0.0.001
 # Created:      2016-05-12 07:08:19
-# Modified:     2016-09-12 11:18:41
+# Modified:     2017-03-11 10:35:08
 # Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 # ------------------------------------------------------------------------------
 # Copyright (C) 2016 Mickael Temporão
@@ -14,36 +14,31 @@
 
 # CRAN PACKAGES ----------------------------------------------------------------
 cran_packages <- c(
-  "devtools"
+  "devtools",
+  "SnowballC",
+  "car",
+  "caTools",
+  "e1071",
+  "flexclust",
+  "glmnet",
+  "kernlab",
+  "minqa",
+  "nnet",
+  "party",
+  "psych",
+  "randomForest",
+  "survival",
+  "xgboost"
 )
 
 # GITHUB PACKAGES -------------------------------------------------------------
 git_packages <- c(
   "bhklab/mRMRe",
-  "cran/SnowballC",
-  "cran/car",
-  "cran/caTools",
-  "cran/e1071",
-  "cran/flexclust",
-  "cran/glmnet",
-  "cran/kernlab",
-  "cran/minqa",
-  "cran/nnet",
-  "cran/party",
-  "cran/psych",
-  "cran/randomForest",
-  "cran/ROCR",
-  "cran/rpart",
-  "cran/rpart.plot",
-  "cran/survival",
-  "cran/xgboost",
   "gaborcsardi/pkgconfig",
-  "hadley/dplyr",
-  "hadley/ggplot2",
+  "hadley/tidyverse",
   "hadley/haven",
   "hadley/readxl",
   "hadley/rvest",
-  "hadley/tidyr",
   "harrysouthworth/gbm",
   "igraph/rigraph",
   "jrnold/ggthemes"
