@@ -5,7 +5,7 @@
 # Description:  List of R Packages mostly used for Data Science Tasks
 # Version:      0.0.0.001
 # Created:      2016-05-12 07:08:19
-# Modified:     2017-03-11 10:35:08
+# Modified:     2017-03-11 10:45:03
 # Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 # ------------------------------------------------------------------------------
 # Copyright (C) 2016 Mickael Temporão
@@ -36,9 +36,6 @@ git_packages <- c(
   "bhklab/mRMRe",
   "gaborcsardi/pkgconfig",
   "hadley/tidyverse",
-  "hadley/haven",
-  "hadley/readxl",
-  "hadley/rvest",
   "harrysouthworth/gbm",
   "igraph/rigraph",
   "jrnold/ggthemes"
