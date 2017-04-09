@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2016-11-12 22:00:14
+" Modified:     2017-04-06 13:01:06
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -23,6 +23,7 @@ Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bling/vim-airline'
+Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
@@ -49,7 +50,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/header.vim'
 Plug 'vim-scripts/LanguageTool'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -84,6 +84,9 @@ set hidden
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Show line numbers
 set number
+
+" Highlight Over Length Lines
+set cc=80
 
 " Use spaces instead of tabs
 set expandtab
@@ -329,6 +332,9 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
+
+" csv.vim
+filetype plugin on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Setting up the R environnment
