@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2017-04-06 13:01:06
+" Modified:     2017-04-10 09:59:06
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -349,4 +349,4 @@ let R_assign = 0
 autocmd FileType r setlocal shiftwidth=2 tabstop=2
 
 " Set file type for RMarkdown files
-autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
+" autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
