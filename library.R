@@ -5,7 +5,7 @@
 # Description:  List of R Packages mostly used for Data Science Tasks
 # Version:      0.0.0.001
 # Created:      2016-05-12 07:08:19
-# Modified:     2017-05-30 10:55:58
+# Modified:     2017-06-01 09:36:59
 # Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 # ------------------------------------------------------------------------------
 # Copyright (C) 2016 Mickael Temporão
@@ -14,13 +14,13 @@
 
 # CRAN PACKAGES ----------------------------------------------------------------
 cran_packages <- c(
+  "arm",
   "devtools",
   "SnowballC",
   "car",
   "e1071",
   "glmnet",
   "kernlab",
-  "minqa",
   "nnet",
   "party",
   "psych",
@@ -31,21 +31,22 @@ cran_packages <- c(
 
 # GITHUB PACKAGES -------------------------------------------------------------
 git_packages <- c(
+  "RcppCore/Rcpp",
+  "RcppCore/RcppEigen",
+  "Rdatatable/data.table",
   "cran/setwidth",
   "gaborcsardi/pkgconfig",
   "hadley/tidyverse",
   "harrysouthworth/gbm",
   "igraph/rigraph",
+  "IQSS/Zelig",
+  "jalvesaq/colorout",
   "jrnold/ggthemes"
   "kbenoit/quanteda",
-  "RcppCore/Rcpp",
-  "RcppCore/RcppEigen",
-  "Rdatatable/data.table",
-  "rstudio/rmarkdown",
   "robjhyndman/forecast",
+  "rstudio/rmarkdown",
   "stefvanbuuren/mice",
-  "jalvesaq/colorout",
-  "topepo/caret/pkg/caret"
+  "topepo/caret/pkg/caret",
 )
 
 # CRAN INSTALL ----------------------------------------------------------------
