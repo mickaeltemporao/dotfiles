@@ -5,7 +5,7 @@
 # Description:  List of R Packages mostly used for Data Science Tasks
 # Version:      0.0.0.001
 # Created:      2016-05-12 07:08:19
-# Modified:     2017-06-01 09:36:59
+# Modified:     2017-06-01 09:39:53
 # Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 # ------------------------------------------------------------------------------
 # Copyright (C) 2016 Mickael Temporão
@@ -26,6 +26,7 @@ cran_packages <- c(
   "psych",
   "randomForest",
   "survival",
+  "stargazer",
   "xgboost"
 )
 
@@ -47,6 +48,7 @@ git_packages <- c(
   "rstudio/rmarkdown",
   "stefvanbuuren/mice",
   "topepo/caret/pkg/caret",
+  "yihui/formatR"
 )
 
 # CRAN INSTALL ----------------------------------------------------------------
