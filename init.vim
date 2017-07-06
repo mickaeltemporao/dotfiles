@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2017-04-10 09:59:06
+" Modified:     2017-07-06 14:39:12
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -28,6 +28,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jalvesaq/Nvim-R'
+" Plug 'jimhester/lintr'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
@@ -39,6 +40,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'ryanoasis/vim-devicons'
+" Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
@@ -206,10 +208,10 @@ map <leader>s? z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/Desktop/buffer.md<cr>
+map <leader>q :e ~/googledrive/buffer.md<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/Desktop/buffer.R<cr>
+map <leader>x :e ~/googledrive/buffer.R<cr>
 
 " Create the 'tags' file (requires ctags ? brew install ctags)
 command! MakeTags !ctags -R .
@@ -340,7 +342,10 @@ filetype plugin on
 " Setting up the R environnment
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: Fix R Tabulation Behaviour for Neovim
-"TODO: R Code linter
+
+"TODO: SETUP R Code linter
+" let g:syntastic_enable_r_lintr_checker = 1
+" let g:syntastic_r_checkers = ['lintr']
 
 " Disable underscore shortcut in Nvim-R
 let R_assign = 0
