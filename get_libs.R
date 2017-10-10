@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # ------------------------------------------------------------------------------
 # Title:        Get Library
-# Filename:     getLibs.R
+# Filename:     get_libs.R
 # Description:  Get and install all your old R libraries
 # Version:      0.0.0.000
 # Created:      2017-07-30 15:56:12
