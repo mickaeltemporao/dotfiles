@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="sorin"
+ZSH_THEME="hyperzsh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -24,7 +24,7 @@ ZSH_THEME="sorin"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -81,20 +81,24 @@ fi
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
+alias vim='nvim'
 alias -s R=vim
 alias -s txt=vim
 alias -s py=vim
 alias -s log="less -MN"
 alias -s html='open -a "Google Chrome Canary"'
 
-# TODO.txt
-source /usr/local/Cellar/todo-txt/2.10/etc/bash_completion.d/todo_completion complete -F _todo t
-alias t='/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/googledrive/todo/todo.cfg'
-alias vim='nvim'
-
 #alias tmux="TERM=screen-256color-bce tmux"
 export PATH="/usr/local/sbin:$PATH"
 
 # Startup display
 archey
-t ls
+
+# zle - zsh line editing module
+## Kill ESC key lag
+export KEYTIMEOUT=1
+
+# TODO.txt
+# source /usr/local/Cellar/todo-txt/2.10/etc/bash_completion.d/todo_completion complete -F _todo t
+# alias t='/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/googledrive/todo/todo.cfg'
+# t ls
