@@ -1,8 +1,8 @@
 " Vim File
 " ------------------------------------------------------------------------------
 " Title:        Vim Configuration
-" Filename:     vimrc.vim
-" Description:  Configuration File for Vim 8
+" Filename:     .vimrc
+" Description:  Configuration file for Vim 8
 " Version:      0.0.0.002
 " Created:      2016-11-02 14:33:31
 " Modified:     2017-06-17 21:52:47
