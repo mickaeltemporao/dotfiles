@@ -5,8 +5,7 @@
 # Description:  Get and install all your old R libraries
 # Version:      0.0.0.000
 # Created:      2017-07-30 15:56:12
-# Modified:     2017-07-30 16:10:58
-# Source:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
+# Modified:     2017-10-12 06:02:55
 # ------------------------------------------------------------------------------
 # Copyright (C) 2017 Mickael Temporão
 # Licensed under the GPL-2 < https://www.gnu.org/licenses/gpl-2.0.txt >

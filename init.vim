@@ -5,7 +5,7 @@
 " Description:  Configuration File for Vim & NeoVim
 " Version:      0.0.0.001
 " Created:      2015-11-19 14:33:31
-" Modified:     2017-07-06 14:39:12
+" Modified:     2017-12-13 13:42:43
 " Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
 " ------------------------------------------------------------------------------
 " Copyright (C) 2016 Mickael Temporão
@@ -25,11 +25,13 @@ Plug 'beloglazov/vim-online-thesaurus'
 Plug 'bling/vim-airline'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ivanov/vim-ipython'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jalvesaq/Nvim-R'
 " Plug 'jimhester/lintr'
 Plug 'junegunn/goyo.vim'
+Plug 'python-mode/python-mode'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 " Plug 'vim-latex/vim-latex'
@@ -40,7 +42,8 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
@@ -49,7 +52,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/header.vim'
+" Plug 'vim-scripts/header.vim'
+Plug 'ivanov/vim-ipython'
 Plug 'vim-scripts/LanguageTool'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Add plugins to &runtimepath
@@ -80,6 +84,8 @@ set ignorecase
 " Buffer Switch without saving
 set hidden
 
+" Execute current file
+nnoremap <F9> :!%:p
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -214,6 +220,16 @@ map <leader>q :e ~/googledrive/buffer.md<cr>
 map <leader>x :e ~/googledrive/buffer.R<cr>
 
 " Create the 'tags' file (requires ctags ? brew install ctags)
+
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+
 command! MakeTags !ctags -R .
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -279,7 +295,7 @@ command! -range=% RemoveDiacritics call s:RemoveDiacritics(<line1>, <line2>)
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>e :e! ~/.config/nvim/init.vim<cr>
-autocmd! bufwritepost vimrc source ~/.config/nvim/init.vim
+autocmd! bufwritepost init.vim source ~/.config/nvim/init.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
