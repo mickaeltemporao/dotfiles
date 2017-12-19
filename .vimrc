@@ -1,8 +1,8 @@
 " Vim File
 " ------------------------------------------------------------------------------
 " Title:        Vim Configuration
-" Filename:     .vimrc
-" Description:  Configuration file for Vim 8
+" Filename:     vimrc.vim
+" Description:  Configuration File for Vim 8
 " Version:      0.0.0.002
 " Created:      2016-11-02 14:33:31
 " Modified:     2017-06-17 21:52:47
@@ -20,8 +20,7 @@ set nocompatible
 
 " Editing and reloading of vimrc configs
 map <leader>e :e! ~/.vimrc<cr>
-"map <leader>e :e! $MYVIMRC<cr>
-autocmd! bufwritepost vimrc source ~/.vimrc
+autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " Enable filetype plugins
 filetype plugin indent on
@@ -49,6 +48,9 @@ set autoread
 " Buffer Switch without saving
 set hidden
 
+" Execute current file
+nnoremap <F9> :!%:p
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -58,6 +60,9 @@ set so=3
 
 " Show line numbers
 set number
+
+" Highlight Over Length Lines
+set cc=80
 
 " Enable true color
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -102,6 +107,10 @@ set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,7 +180,6 @@ map <leader>sa zg
 map <leader>s? z=
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,20 +187,29 @@ map <leader>s? z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer.md<cr>
+map <leader>q :e ~/googledrive/buffer.md<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer<cr>
+map <leader>x :e ~/googledrive/buffer.R<cr>
 
 " Create the 'tags' file (requires ctags ? brew install ctags)
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+
 command! MakeTags !ctags -R .
+
 " Turn persistent undo on
 try
     set undodir=~/.vim/temp_dirs/undodir
     set undofile
 catch
 endtry
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -301,7 +318,11 @@ map <leader>nf :NERDTreeFind<cr>
 " Setting up the R environnment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: R Code linter
-let R_term_cmd = "xterm"
+"let R_term_cmd = "xterm"
+"TODO: Fix R Tabulation Behaviour for Neovim
+"TODO: SETUP R Code linter
+" let g:syntastic_enable_r_lintr_checker = 1
+" let g:syntastic_r_checkers = ['lintr']
 
 " Disable underscore shortcut in Nvim-R
 let R_assign = 0
