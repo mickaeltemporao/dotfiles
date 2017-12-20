@@ -7,9 +7,6 @@
 [submodule ".vim/pack/mt/start/vim-colors-solarized"]
 	path = .vim/pack/mt/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/pack/mt/start/ctrlp"]
-	path = .vim/pack/mt/start/ctrlp
-	url = https://github.com/kien/ctrlp.vim.git
 [submodule ".vim/pack/mt/start/vim-fugitive"]
 	path = .vim/pack/mt/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -85,3 +82,6 @@
 [submodule ".vim/pack/mt/start/vimtex"]
 	path = .vim/pack/mt/start/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule ".vim/pack/mt/start/ctrlp"]
+	path = .vim/pack/mt/start/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
