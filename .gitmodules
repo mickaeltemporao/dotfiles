@@ -1,3 +1,45 @@
 [submodule ".vim/pack/mt/start/vim-airline"]
 	path = .vim/pack/mt/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/pack/mt/start/vim-airline-themes"]
+	path = .vim/pack/mt/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule ".vim/pack/mt/start/vim-colors-solarized"]
+	path = .vim/pack/mt/start/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/pack/mt/start/ctrlp"]
+	path = .vim/pack/mt/start/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/pack/mt/start/vim-fugitive"]
+	path = .vim/pack/mt/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/pack/mt/start/vim-surround"]
+	path = .vim/pack/mt/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/pack/mt/start/Nvim-R"]
+	path = .vim/pack/mt/start/Nvim-R
+	url = https://github.com/jalvesaq/Nvim-R.git
+[submodule ".vim/pack/mt/start/ack"]
+	path = .vim/pack/mt/start/ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/pack/mt/start/the_silver_searcher"]
+	path = .vim/pack/mt/start/the_silver_searcher
+	url = https://github.com/ggreer/the_silver_searcher.git
+[submodule ".vim/pack/mt/start/nerdtree"]
+	path = .vim/pack/mt/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/pack/mt/start/nerdtree-git-plugin"]
+	path = .vim/pack/mt/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule ".vim/pack/mt/start/vim-dispatch"]
+	path = .vim/pack/mt/start/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule ".vim/pack/mt/start/vim-online-thesaurus"]
+	path = .vim/pack/mt/start/vim-online-thesaurus
+	url = https://github.com/beloglazov/vim-online-thesaurus.git
+[submodule ".vim/pack/mt/start/ale"]
+	path = .vim/pack/mt/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule ".vim/pack/mt/start/completor"]
+	path = .vim/pack/mt/start/completor
+	url = https://github.com/maralla/completor.vim.git
