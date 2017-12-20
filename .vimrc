@@ -364,6 +364,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set softtabstop=2
     \ set shiftwidth=2
 
+" completor setup
+let g:completor_python_binary = '/usr/local/lib/python3.6'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ag searching and cope displaying
