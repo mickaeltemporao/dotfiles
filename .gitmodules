@@ -58,9 +58,6 @@
 [submodule ".vim/pack/mt/start/vim-commentary"]
 	path = .vim/pack/mt/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/pack/mt/start/vim-devicons"]
-	path = .vim/pack/mt/start/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons.git
 [submodule ".vim/pack/mt/start/vim-easy-align"]
 	path = .vim/pack/mt/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
