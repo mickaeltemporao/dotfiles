@@ -43,3 +43,27 @@
 [submodule ".vim/pack/mt/start/completor"]
 	path = .vim/pack/mt/start/completor
 	url = https://github.com/maralla/completor.vim.git
+[submodule ".vim/pack/mt/start/vim-gitgutter"]
+	path = .vim/pack/mt/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule ".vim/pack/mt/start/csv"]
+	path = .vim/pack/mt/start/csv
+	url = https://github.com/chrisbra/csv.vim.git
+[submodule ".vim/pack/mt/start/goyo"]
+	path = .vim/pack/mt/start/goyo
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule ".vim/pack/mt/start/ultisnips"]
+	path = .vim/pack/mt/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule ".vim/pack/mt/start/vim-snippets"]
+	path = .vim/pack/mt/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/pack/mt/start/vim-commentary"]
+	path = .vim/pack/mt/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/pack/mt/start/vim-devicons"]
+	path = .vim/pack/mt/start/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule ".vim/pack/mt/start/vim-easy-align"]
+	path = .vim/pack/mt/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
