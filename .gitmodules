@@ -67,3 +67,21 @@
 [submodule ".vim/pack/mt/start/vim-easy-align"]
 	path = .vim/pack/mt/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule ".vim/pack/mt/start/vim-expand-region"]
+	path = .vim/pack/mt/start/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region.git
+[submodule ".vim/pack/mt/start/vim-markdown"]
+	path = .vim/pack/mt/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/pack/mt/start/vim-pandoc"]
+	path = .vim/pack/mt/start/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule ".vim/pack/mt/start/vim-pandoc-syntax"]
+	path = .vim/pack/mt/start/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
+[submodule ".vim/pack/mt/start/vim-rmarkdown"]
+	path = .vim/pack/mt/start/vim-rmarkdown
+	url = https://github.com/vim-pandoc/vim-rmarkdown.git
+[submodule ".vim/pack/mt/start/vimtex"]
+	path = .vim/pack/mt/start/vimtex
+	url = https://github.com/lervag/vimtex.git
