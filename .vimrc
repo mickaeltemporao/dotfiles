@@ -18,16 +18,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 
-" Editing and reloading of vimrc configs
-map <leader>e :e! ~/.vimrc<cr>
-autocmd! bufwritepost .vimrc source ~/.vimrc
-
-" Enable filetype plugins
-filetype plugin indent on
-
 " Map leader to space bar
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
+
+" Editing and reloading of vimrc configs
+map <leader>e :e! ~/.vimrc<cr>
+
+" Enable filetype plugins
+filetype plugin indent on
 
 " Fast saving
 nmap <leader>w :w!<cr>
