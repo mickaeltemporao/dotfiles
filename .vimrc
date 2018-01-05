@@ -18,6 +18,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 
+" Set System Clipboard by default
+set clipboard=unnamed
+
 " Map leader to space bar
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"

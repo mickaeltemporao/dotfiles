@@ -31,12 +31,16 @@ options(prompt          = "> ")
 options(continue        = "... ")
 options(width           = 120)
 options(defaultPackages = c(getOption("defaultPackages"), "tidyverse"))
-options(browser = "/usr/bin/open -a '/Applications/Google Chrome Canary.app'")
+options(browser         = "/usr/bin/open -a '/Applications/Google Chrome Canary.app'")
 
 utils::rc.settings(ipck = TRUE)
 
-q <- function (save="no", ...) {
-  quit(save=save, ...)
+q <- function (save = "no", ...) {
+  quit(save = save, ...)
+}
+
+exit <- function (save = "no", ...) {
+  q(save = save, ...)
 }
 
 if(Sys.getenv("TERM") == "xterm-256color")
