@@ -97,3 +97,6 @@
 [submodule ".vim/pack/mt/start/vim-header"]
 	path = .vim/pack/mt/start/vim-header
 	url = https://github.com/alpertuna/vim-header.git
+[submodule ".vim/pack/mt/start/python-mode"]
+	path = .vim/pack/mt/start/python-mode
+	url = https://github.com/python-mode/python-mode.git
