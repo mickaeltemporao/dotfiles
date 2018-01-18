@@ -103,3 +103,6 @@
 [submodule ".vim/pack/mt/start/vim-flake8"]
 	path = .vim/pack/mt/start/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
+[submodule ".vim/pack/mt/start/vim-ipython"]
+	path = .vim/pack/mt/start/vim-ipython
+	url = https://github.com/ivanov/vim-ipython.git
