@@ -1,17 +1,6 @@
-" Vim File
-" ------------------------------------------------------------------------------
-" Title:        Vim Configuration
-" Filename:     vimrc.vim
-" Description:  Configuration File for Vim 8
-" Version:      0.0.0.002
-" Created:      2016-11-02 14:33:31
-" Modified:     2017-06-17 21:52:47
-" Author:       Mickael Temporão < mickael.temporao.1 at ulaval.ca >
-" ------------------------------------------------------------------------------
-" Copyright (C) 2016 Mickael Temporão
-" Licensed under the GPL-2 < https://www.gnu.org/licenses/gpl-2.0.txt >
-" ------------------------------------------------------------------------------
-
+" File  : /Users/mickael/.vimrc
+" Author: Mickael Temporão <mickael at delphia dot com>
+" Date  : 17.01.2018
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -30,7 +19,7 @@ map <leader>e :e! ~/.vimrc<cr>
 
 " Enable filetype plugins
 filetype plugin indent on
-
+"
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -326,6 +315,13 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
+" vim-header
+map <F4> :AddHeader<CR>
+let g:header_field_author             = 'Mickael Temporão'
+let g:header_field_author_email       = 'mickael at delphia dot com'
+" let g:header_auto_add_header          = 0
+let g:header_field_modified_timestamp = 0
+let g:header_field_modified_by        = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Setting up the R environnment
@@ -352,22 +348,28 @@ autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PEP8 indentation
 " au BufNewFile,BufRead *.py
-    " \ set tabstop=4
-    " \ set softtabstop=4
-    " \ set shiftwidth=4
-    " \ set textwidth=79
-    " \ set expandtab
-    " \ set autoindent
-    " \ set fileformat=unix
+"     \ set tabstop=4
+"     \ set softtabstop=4
+"     \ set shiftwidth=4
+"     \ set textwidth=79
+"     \ set expandtab
+"     \ set autoindent
+"     \ set fileformat=unix
 
-" Full Stack Development
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+" " Full Stack Development
+" au BufNewFile,BufRead *.js, *.html, *.css
+"     \ set tabstop=2
+"     \ set softtabstop=2
+"     \ set shiftwidth=2
 
 " completor setup
 let g:completor_python_binary = '/usr/local/lib/python3.6'
+
+" python-mode
+let g:pymode_python = 'python3'
+
+let python_highlight_all = 1
+syntax on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ag searching and cope displaying
