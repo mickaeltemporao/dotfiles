@@ -100,3 +100,6 @@
 [submodule ".vim/pack/mt/start/python-mode"]
 	path = .vim/pack/mt/start/python-mode
 	url = https://github.com/python-mode/python-mode.git
+[submodule ".vim/pack/mt/start/vim-flake8"]
+	path = .vim/pack/mt/start/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
