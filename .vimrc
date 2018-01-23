@@ -1,5 +1,11 @@
 " File  : /Users/mickael/.vimrc
 " Author: Mickael Temporão <mickael at delphia dot com>
+" Date  : 18.01.2018
+" File  : /Users/mickael/.vimrc
+" Author: Mickael Temporão <mickael at delphia dot com>
+" Date  : 18.01.2018
+" File  : /Users/mickael/.vimrc
+" Author: Mickael Temporão <mickael at delphia dot com>
 " Date  : 17.01.2018
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -319,7 +325,7 @@ map <leader>nf :NERDTreeFind<cr>
 map <F4> :AddHeader<CR>
 let g:header_field_author             = 'Mickael Temporão'
 let g:header_field_author_email       = 'mickael at delphia dot com'
-" let g:header_auto_add_header          = 0
+let g:header_auto_add_header          = 0
 let g:header_field_modified_timestamp = 0
 let g:header_field_modified_by        = 0
 
