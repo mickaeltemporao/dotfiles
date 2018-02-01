@@ -362,17 +362,11 @@ autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
 "     \ set autoindent
 "     \ set fileformat=unix
 
-" " Full Stack Development
-" au BufNewFile,BufRead *.js, *.html, *.css
-"     \ set tabstop=2
-"     \ set softtabstop=2
-"     \ set shiftwidth=2
-
-" completor setup
+" completor setup (path to python with jedi installed)
 let g:completor_python_binary = '/usr/local/lib/python3.6'
 
 " python-mode
-let g:pymode_python = 'python3'
+" let g:pymode_python = 'python3'
 
 let python_highlight_all = 1
 syntax on
