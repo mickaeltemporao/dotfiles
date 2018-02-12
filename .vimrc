@@ -9,43 +9,17 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/vim-easy-align'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins Configurations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nord-vim ----------------
-let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-let g:nord_uniform_status_lines = 1
-
-" ctrlp ----------------
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-" Open buffer menu
-nnoremap <Leader>o :CtrlPBuffer<CR>
-" Open most recently used files
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
-
-" Nvim-R ----------------
-
-" vim-easy-aligna ----------------
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" Nerd Tree ----------------
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -91,6 +65,54 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins Configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nord-vim ----------------
+let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+let g:nord_uniform_status_lines = 1
+
+" ctrlp ----------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" Open buffer menu
+nnoremap <Leader>o :CtrlPBuffer<CR>
+" Open most recently used files
+nnoremap <Leader>f :CtrlPMRUFiles<CR>
+
+" Nvim-R ----------------
+
+" vim-easy-aligna ----------------
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" Nerd Tree ----------------
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr>
+
+" vim-markdown ----------------
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" vim-fugitive
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Airline configuration
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#tmuxline#enabled = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
