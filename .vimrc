@@ -38,7 +38,7 @@ map <leader>e :e! ~/.vimrc<cr>
 
 " Enable filetype plugins
 filetype plugin indent on
-"
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -65,6 +65,10 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
+
+" Turn persistent undo on
+set undodir=~/.vim/undodir
+set undofile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
