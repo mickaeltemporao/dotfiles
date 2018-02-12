@@ -18,12 +18,12 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nord-vim ---------------- 
+" nord-vim ----------------
 let g:nord_italic = 1
 " let g:nord_italic_comments = 1
 let g:nord_uniform_status_lines = 1
 
-" ctrlp ---------------- 
+" ctrlp ----------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 " Open buffer menu
@@ -31,13 +31,13 @@ nnoremap <Leader>o :CtrlPBuffer<CR>
 " Open most recently used files
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
-" Nvim-R ---------------- 
+" Nvim-R ----------------
 
-" vim-easy-aligna ---------------- 
+" vim-easy-aligna ----------------
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Nerd Tree ---------------- 
+" Nerd Tree ----------------
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -106,7 +106,7 @@ set cc=80
 
 " vim-colors
 colorscheme nord
-set background=dark    
+set background=dark
 
 " Icons
 let g:airline_powerline_fonts = 1
@@ -132,6 +132,19 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing <leader> ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => R Environment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable underscore shortcut in Nvim-R
@@ -148,3 +161,25 @@ autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python Environment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Custom Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Strip all trailing spaces before saving files.
+" http://vim.wikia.com/wiki/Remove_trailing_spaces
+autocmd BufWritePre * :call StripTrailingWhitespace()
+function! StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    if &filetype == 'mail'
+  " Preserve space after e-mail signature separator
+      %s/\(^--\)\@<!\s\+$//e
+    else
+      %s/\s\+$//e
+    endif
+    normal 'yz<Enter>
+    normal `z
+  endif
+endfunction
