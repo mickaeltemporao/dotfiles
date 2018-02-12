@@ -152,6 +152,13 @@ set magic
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Use spaces instead of tabs
+set expandtab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -164,6 +171,18 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+"Toggle Spelling On/Off & Switch
+function! ToggleSpellLang()
+    " toggle between en and fr
+    if &spelllang =~# 'en'
+        :set spelllang=fr
+    else
+        :set spelllang=en
+    endif
+endfunction
+nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
+nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,10 +198,10 @@ autocmd FileType r setlocal shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python Environment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO:
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -205,3 +224,24 @@ function! StripTrailingWhitespace()
     normal `z
   endif
 endfunction
+
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" Quickly open a buffer for scribble
+map <leader>q :e ~/googledrive/buffer.md<cr>
+
+" Quickly open a markdown buffer for scribble
+map <leader>x :e ~/googledrive/buffer.R<cr>
+
+" Create the 'tags' file (requires ctags ? brew install ctags)
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+
+command! MakeTags !ctags -R .
