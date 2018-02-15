@@ -1,13 +1,3 @@
-" File  : /Users/mickael/.vimrc
-" Author: Mickael Temporão <mickael at delphia dot com>
-" Date  : 18.01.2018
-" File  : /Users/mickael/.vimrc
-" Author: Mickael Temporão <mickael at delphia dot com>
-" Date  : 18.01.2018
-" File  : /Users/mickael/.vimrc
-" Author: Mickael Temporão <mickael at delphia dot com>
-" Date  : 17.01.2018
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
