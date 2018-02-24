@@ -5,6 +5,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/Nvim-R'
@@ -70,12 +71,16 @@ endif
 set undodir=~/.vim/undodir
 set undofile
 
+" Tab navigation
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nord-vim ----------------
-let g:nord_italic = 1
+" let g:nord_italic = 1
 " let g:nord_italic_comments = 1
 let g:nord_uniform_status_lines = 1
 
@@ -163,6 +168,14 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Quickly open a buffer for scribble
+map <leader>q :e ~/googledrive/buffer.md<cr>
+
+" Quickly open a markdown buffer for scribble
+map <leader>x :e ~/googledrive/buffer.py<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking

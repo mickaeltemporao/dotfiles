@@ -1,7 +1,7 @@
 #!/bin/zsh
-# File  : /Users/mickael/.zshrc
+# File  : .zshrc
 # Author: Mickael Temporão <mickael at delphia dot com>
-# Date  : 18.01.2018
+#
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -92,7 +92,11 @@ alias -s log="less -MN"
 alias -s html='open -a "Google Chrome Canary"'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias pyproj="cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git"
-source "~/.dotfiles/.alias"
+[ -f .aliases ] && source .aliases
+
+google() {
+  open "https://www.google.com/search?q="$1
+}
 
 #alias tmux="TERM=screen-256color-bce tmux"
 export PATH="/usr/local/sbin:$PATH"
