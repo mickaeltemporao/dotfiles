@@ -4,7 +4,6 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins.
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -14,10 +13,19 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'chrisbra/csv.vim'
+Plug 'lervag/vimtex'
+" Writing Plugins
+Plug 'dbmrq/vim-ditto'
+Plug 'reedes/vim-wordy'
+Plug 'junegunn/goyo.vim'
+Plug 'rhysd/vim-grammarous'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -122,6 +130,24 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#ctrlp#color_template = 'insert'
 let g:airline#extensions#tmuxline#enabled = 1
 
+" vim-ditto ----------------
+" Use autocmds to check your text automatically and keep the highlighting
+" up to date (easier):
+au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
+nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
+
+" If you don't want the autocmds, you can also use an operator to check
+" specific parts of your text:
+" vmap <leader>d <Plug>Ditto	       " Call Ditto on visual selection
+" nmap <leader>d <Plug>Ditto	       " Call Ditto on operator movement
+
+nmap =d <Plug>DittoNext                " Jump to the next word
+nmap -d <Plug>DittoPrev                " Jump to the previous word
+nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+nmap ]d <Plug>DittoMore                " Show the next matches
+nmap [d <Plug>DittoLess                " Show the previous matches
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -138,6 +164,7 @@ set cc=80
 " vim-colors
 colorscheme nord
 set background=dark
+set t_Co=256
 
 " Icons
 let g:airline_powerline_fonts = 1
@@ -150,7 +177,7 @@ set ruler
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*.csv,*.feather
 
 " Enable backspace normal behaviour
 set backspace=indent,eol,start
