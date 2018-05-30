@@ -8,6 +8,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/Nvim-R'
+Plug 'jalvesaq/vimcmdline'
+Plug 'davidhalter/jedi-vim'
+Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -19,6 +22,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
 Plug 'lervag/vimtex'
+
 " Writing Plugins
 Plug 'dbmrq/vim-ditto'
 Plug 'reedes/vim-wordy'
@@ -92,6 +96,9 @@ map <leader>h :bprevious<cr>
 " let g:nord_italic_comments = 1
 let g:nord_uniform_status_lines = 1
 
+" vimcmdline
+let g:cmdline_app = {"python": "ipython --no-autoindent"}
+
 " ctrlp ----------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -99,6 +106,9 @@ let g:ctrlp_cmd = 'CtrlP'
 nnoremap <Leader>o :CtrlPBuffer<CR>
 " Open most recently used files
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
+
+" tagbar ----------------
+nmap <F10> :TagbarToggle<CR>
 
 " Nvim-R ----------------
 
