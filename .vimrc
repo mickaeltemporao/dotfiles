@@ -97,7 +97,9 @@ map <leader>h :bprevious<cr>
 let g:nord_uniform_status_lines = 1
 
 " vimcmdline
-let g:cmdline_app = {"python": "ipython --no-autoindent"}
+let g:cmdline_app     = {"python": "ipython --no-autoindent"}
+let cmdline_map_start = '<LocalLeader>t'
+let cmdline_map_send  = '<c-t>'
 
 " ctrlp ----------------
 let g:ctrlp_map = '<c-p>'
