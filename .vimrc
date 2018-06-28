@@ -8,8 +8,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/Nvim-R'
-Plug 'jalvesaq/vimcmdline'
-Plug 'davidhalter/jedi-vim'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-easy-align'
 Plug 'ryanoasis/vim-devicons'
@@ -22,14 +20,24 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
 Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Python Plugins
+Plug 'davidhalter/jedi-vim'
+Plug 'jalvesaq/vimcmdline'
+Plug 'maralla/completor.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
 
 " Writing Plugins
 Plug 'dbmrq/vim-ditto'
 Plug 'reedes/vim-wordy'
 Plug 'junegunn/goyo.vim'
 Plug 'rhysd/vim-grammarous'
-" Plug 'vim-pandoc/vim-pandoc'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -257,7 +265,21 @@ autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python Environment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO:
+" Proper PEP 8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LaTeX Environment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor = "latex"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

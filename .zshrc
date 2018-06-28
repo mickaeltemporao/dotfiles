@@ -92,6 +92,8 @@ alias -s log="less -MN"
 alias -s html='open -a "Google Chrome Canary"'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias pyproj="cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git"
+alias psd="python setup.py develop"
+
 [ -f .aliases ] && source .aliases
 
 google() {
