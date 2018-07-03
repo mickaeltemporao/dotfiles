@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew brewcolored-man colorize git github osx tmux vi-mode zsh-syntax-highlighting)
+plugins=(brewcolored-man colorize git github osx tmux vi-mode zsh-syntax-highlighting)
 
 # User configuration
 
@@ -103,14 +103,16 @@ google() {
 #alias tmux="TERM=screen-256color-bce tmux"
 export PATH="/usr/local/sbin:$PATH"
 
-# Startup display
-archey
-
 # zle - zsh line editing module
 ## Kill ESC key lag
 export KEYTIMEOUT=1
 
-# TODO.txt
-# source /usr/local/Cellar/todo-txt/2.10/etc/bash_completion.d/todo_completion complete -F _todo t
-# alias t='/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/googledrive/todo/todo.cfg'
-# t ls
+# pyenv Configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Startup display
+archey
