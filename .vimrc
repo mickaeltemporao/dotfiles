@@ -1,4 +1,48 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jalvesaq/Nvim-R'
+Plug 'majutsushi/tagbar'
+Plug 'junegunn/vim-easy-align'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'chrisbra/csv.vim'
+Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Python Plugins
+Plug 'davidhalter/jedi-vim'
+Plug 'jalvesaq/vimcmdline'
+Plug 'maralla/completor.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+
+" Writing Plugins
+Plug 'dbmrq/vim-ditto'
+Plug 'reedes/vim-wordy'
+Plug 'junegunn/goyo.vim'
+Plug 'rhysd/vim-grammarous'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
@@ -15,13 +59,9 @@ map <leader>e :e! ~/.vimrc<cr>
 
 " Enable filetype plugins
 filetype plugin indent on
-"
+
 " Fast saving
 nmap <leader>w :w!<cr>
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
 
 " Case Insensitive search
 set ignorecase
@@ -38,6 +78,96 @@ set hidden
 " Execute current file
 nnoremap <F9> :!%:p
 
+" Incremental browser search
+set incsearch
+
+" Highlight search results
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+" Turn persistent undo on
+set undodir=~/.vim/undodir
+set undofile
+
+" Tab navigation
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins Configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nord-vim ----------------
+" let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+let g:nord_uniform_status_lines = 1
+
+" vimcmdline
+let g:cmdline_app     = {"python": "ipython --no-autoindent"}
+let cmdline_map_start = '<LocalLeader>t'
+let cmdline_map_send  = '<c-t>'
+
+" ctrlp ----------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" Open buffer menu
+nnoremap <Leader>o :CtrlPBuffer<CR>
+" Open most recently used files
+nnoremap <Leader>f :CtrlPMRUFiles<CR>
+
+" tagbar ----------------
+nmap <F10> :TagbarToggle<CR>
+
+" Nvim-R ----------------
+
+" vim-easy-aligna ----------------
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" Nerd Tree ----------------
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark
+map <leader>nf :NERDTreeFind<cr>
+
+" vim-markdown ----------------
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" vim-fugitive
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Airline configuration
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#tmuxline#enabled = 1
+
+" vim-ditto ----------------
+" Use autocmds to check your text automatically and keep the highlighting
+" up to date (easier):
+au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
+nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
+
+" If you don't want the autocmds, you can also use an operator to check
+" specific parts of your text:
+" vmap <leader>d <Plug>Ditto	       " Call Ditto on visual selection
+" nmap <leader>d <Plug>Ditto	       " Call Ditto on operator movement
+
+nmap =d <Plug>DittoNext                " Jump to the next word
+nmap -d <Plug>DittoPrev                " Jump to the previous word
+nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+nmap ]d <Plug>DittoMore                " Show the next matches
+nmap [d <Plug>DittoLess                " Show the previous matches
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -51,42 +181,14 @@ set number
 " Highlight Over Length Lines
 set cc=80
 
-" Enable true color
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" Set colorscheme
-set background=dark    " Setting dark mode
-colorscheme solarized
+" vim-colors
+colorscheme nord
+set background=dark
+set t_Co=256
 
 " Icons
-set guifont=<FONT_NAME>:h<FONT_SIZE>
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
-
-" Incremental browser search
-set incsearch
-
-" Highlight search results
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-" Set cursor to last position
-autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-" Set cursor shape
-" http://sourceforge.net/mailarchive/forum.php?thread_name=AANLkTinkbdoZ8eNR1X2UobLTeww1jFrvfJxTMfKSq-L%2B%40mail.gmail.com&forum_name=tmux-users
-
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-        endif
+let g:airline_powerline_fonts = 1
+set guifont=Ubuntu\ Mono\ Nerd\ Font\ Complete\ Mono\ Font:h11
 
 "Always show current position
 set ruler
@@ -95,7 +197,7 @@ set ruler
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*.csv,*.feather
 
 " Enable backspace normal behaviour
 set backspace=indent,eol,start
@@ -103,17 +205,9 @@ set backspace=indent,eol,start
 " For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
-set showmatch
-
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
 
@@ -121,49 +215,14 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
-"Auto indent
-set ai
-
-"Smart indent
-set si
-
-"Wrap lines
-set wrap
-
-" Opens a new tab with the current buffer's path
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines
-map j gj
-map k gk
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
+" Quickly open a buffer for scribble
+map <leader>q :e ~/googledrive/buffer.md<cr>
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
-" Mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-
+" Quickly open a markdown buffer for scribble
+map <leader>x :e ~/googledrive/buffer.py<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -177,10 +236,73 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+"Toggle Spelling On/Off & Switch
+function! ToggleSpellLang()
+    " toggle between en and fr
+    if &spelllang =~# 'en'
+        :set spelllang=fr
+    else
+        :set spelllang=en
+    endif
+endfunction
+nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
+nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
+" => R Environment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable underscore shortcut in Nvim-R
+let R_assign = 0
+
+" Set R Tabulation Behaviour
+autocmd FileType r setlocal shiftwidth=2 tabstop=2
+
+" Set file type for RMarkdown files
+autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Python Environment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Proper PEP 8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LaTeX Environment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor = "latex"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Custom Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Strip all trailing spaces before saving files.
+" http://vim.wikia.com/wiki/Remove_trailing_spaces
+autocmd BufWritePre * :call StripTrailingWhitespace()
+function! StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    if &filetype == 'mail'
+  " Preserve space after e-mail signature separator
+      %s/\(^--\)\@<!\s\+$//e
+    else
+      %s/\s\+$//e
+    endif
+    normal 'yz<Enter>
+    normal `z
+  endif
+endfunction
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -201,191 +323,3 @@ let g:tagbar_type_r = {
 \ }
 
 command! MakeTags !ctags -R .
-
-" Turn persistent undo on
-try
-    set undodir=~/.vim/temp_dirs/undodir
-    set undofile
-catch
-endtry
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Custom Functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Toggle Spelling On/Off & Switch
-function! ToggleSpellLang()
-    " toggle between en and fr
-    if &spelllang =~# 'en'
-        :set spelllang=fr
-    else
-        :set spelllang=en
-    endif
-endfunction
-nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
-nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
-
-"Convert cases with ~ to Caps, Lower, Title
-function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
-endfunction
-vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
-
-"Strip all trailing spaces before saving files.
-" http://vim.wikia.com/wiki/Remove_trailing_spaces
-autocmd BufWritePre * :call StripTrailingWhitespace()
-function! StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
-    if &filetype == 'mail'
-  " Preserve space after e-mail signature separator
-      %s/\(^--\)\@<!\s\+$//e
-    else
-      %s/\s\+$//e
-    endif
-    normal 'yz<Enter>
-    normal `z
-  endif
-endfunction
-
-" Remove diacritical signs from characters in specified range of lines.
-" Examples of characters replaced: á -> a, ç -> c, Á -> A, Ç -> C.
-function! s:RemoveDiacritics(line1, line2)
-  let diacs = 'áâãàçéêíóôõüú'  " lowercase diacritical signs
-  let repls = 'aaaaceeiooouu'  " corresponding replacements
-  let diacs .= toupper(diacs)
-  let repls .= toupper(repls)
-  let all = join(getline(a:line1, a:line2), "\n")
-  call setline(a:line1, split(tr(all, diacs, repls), "\n"))
-endfunction
-command! -range=% RemoveDiacritics call s:RemoveDiacritics(<line1>, <line2>)
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins Configurations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" vim-expand-region
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-" Airline configuration
-set laststatus=2
-let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#ctrlp#color_template = 'insert'
-let g:airline#extensions#tmuxline#enabled = 1
-
-"FuGitive status line
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-"LanguageTool Setup
-let g:languagetool_jar='/usr/local/Cellar/languagetool/3.2/libexec/languagetool-commandline.jar'
-
-" ctrlP
-" Open buffer menu
-nnoremap <Leader>o :CtrlPBuffer<CR>
-" Open most recently used files
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
-
-" Nerd Tree
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark
-map <leader>nf :NERDTreeFind<cr>
-
-" vim-header
-map <F4> :AddHeader<CR>
-let g:header_field_author             = 'Mickael Temporão'
-let g:header_field_author_email       = 'mickael at delphia dot com'
-let g:header_auto_add_header          = 0
-let g:header_field_modified_timestamp = 0
-let g:header_field_modified_by        = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Setting up the R environnment
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: R Code linter
-"let R_term_cmd = "xterm"
-"TODO: Fix R Tabulation Behaviour for Neovim
-"TODO: SETUP R Code linter
-" let g:syntastic_enable_r_lintr_checker = 1
-" let g:syntastic_r_checkers = ['lintr']
-
-" Disable underscore shortcut in Nvim-R
-let R_assign = 0
-
-" Set R Tabulation Behaviour
-autocmd FileType r setlocal shiftwidth=2 tabstop=2
-
-" Set file type for RMarkdown files
-autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Setting up the Python environnment
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PEP8 indentation
-" au BufNewFile,BufRead *.py
-"     \ set tabstop=4
-"     \ set softtabstop=4
-"     \ set shiftwidth=4
-"     \ set textwidth=79
-"     \ set expandtab
-"     \ set autoindent
-"     \ set fileformat=unix
-
-" completor setup (path to python with jedi installed)
-let g:completor_python_binary = '/usr/local/lib/python3.6'
-
-" python-mode
-" let g:pymode_python = 'python3'
-
-let python_highlight_all = 1
-syntax on
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ag searching and cope displaying
-"    requires ag.vim - it's much better than vimgrep/grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you Ag after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ag and put the cursor in the right position
-map <leader>g :Ag
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ag, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>

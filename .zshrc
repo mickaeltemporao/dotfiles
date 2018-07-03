@@ -1,7 +1,7 @@
 #!/bin/zsh
-# File  : /Users/mickael/.zshrc
+# File  : .zshrc
 # Author: Mickael Temporão <mickael at delphia dot com>
-# Date  : 18.01.2018
+#
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew brewcolored-man colorize git github osx tmux vi-mode zsh-syntax-highlighting)
+plugins=(brewcolored-man colorize git github osx tmux vi-mode zsh-syntax-highlighting)
 
 # User configuration
 
@@ -92,19 +92,27 @@ alias -s log="less -MN"
 alias -s html='open -a "Google Chrome Canary"'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias pyproj="cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git"
-source "~/.dotfiles/.alias"
+alias psd="python setup.py develop"
+
+[ -f .aliases ] && source .aliases
+
+google() {
+  open "https://www.google.com/search?q="$1
+}
 
 #alias tmux="TERM=screen-256color-bce tmux"
 export PATH="/usr/local/sbin:$PATH"
-
-# Startup display
-archey
 
 # zle - zsh line editing module
 ## Kill ESC key lag
 export KEYTIMEOUT=1
 
-# TODO.txt
-# source /usr/local/Cellar/todo-txt/2.10/etc/bash_completion.d/todo_completion complete -F _todo t
-# alias t='/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/googledrive/todo/todo.cfg'
-# t ls
+# pyenv Configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Startup display
+archey
