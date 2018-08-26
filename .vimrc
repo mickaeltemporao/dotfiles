@@ -14,30 +14,30 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/csv.vim'
-Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Python Plugins
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'jalvesaq/vimcmdline'
-Plug 'maralla/completor.vim'
-Plug 'tmhedberg/SimpylFold'
+" Plug 'maralla/completor.vim'
+" Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
 " Writing Plugins
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'dbmrq/vim-ditto'
-Plug 'reedes/vim-wordy'
+" Plug 'reedes/vim-wordy'
 Plug 'junegunn/goyo.vim'
-Plug 'rhysd/vim-grammarous'
-Plug 'vim-pandoc/vim-rmarkdown'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'rhysd/vim-grammarous'
+" Plug 'vim-pandoc/vim-rmarkdown'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -48,7 +48,9 @@ call plug#end()
 set nocompatible
 
 " Set System Clipboard by default
-set clipboard=unnamed
+if $TMUX == ''
+        set clipboard+=unnamed
+    endif
 
 " Map leader to space bar
 let mapleader = "\<Space>"
@@ -75,6 +77,11 @@ set autoread
 " Buffer Switch without saving
 set hidden
 
+" Word wrap without line breaks
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+
 " Execute current file
 nnoremap <F9> :!%:p
 
@@ -88,8 +95,19 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Turn persistent undo on
-set undodir=~/.vim/undodir
-set undofile
+let vim_dir = '$HOME/.vim'
+let &runtimepath.=','.vim_dir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let undo_dir = expand(vim_dir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vim_dir)
+    call system('mkdir ' . undo_dir)
+    let &undodir = undo_dir
+    set undofile
+endif
+
 
 " Tab navigation
 map <leader>l :bnext<cr>
@@ -129,7 +147,7 @@ nmap ga <Plug>(EasyAlign)
 " Nerd Tree ----------------
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.parquet$', '\.p$']
 let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
@@ -197,7 +215,7 @@ set ruler
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*.csv,*.feather
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*.csv,*.feather,*.aux,*.csv,*.parquet
 
 " Enable backspace normal behaviour
 set backspace=indent,eol,start

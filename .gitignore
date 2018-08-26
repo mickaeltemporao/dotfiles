@@ -1,6 +1,8 @@
 # OS generated files ===========================================================
 # General
 .DS_Store
+.vscode
+*.swp
 .AppleDouble
 .LSOverride
 Desktop.ini
