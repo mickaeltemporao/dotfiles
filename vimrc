@@ -31,6 +31,7 @@ Plug 'vim-scripts/indentpython.vim'
 
 " Writing Plugins
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'ron89/thesaurus_query.vim'
 Plug 'dbmrq/vim-ditto'
 " Plug 'reedes/vim-wordy'
 Plug 'junegunn/goyo.vim'
