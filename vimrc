@@ -49,9 +49,7 @@ call plug#end()
 set nocompatible
 
 " Set System Clipboard by default
-if $TMUX == ''
-        set clipboard+=unnamed
-    endif
+set clipboard=unnamedplus
 
 " Map leader to space bar
 let mapleader = "\<Space>"
@@ -126,7 +124,7 @@ let g:nord_uniform_status_lines = 1
 " vimcmdline
 let g:cmdline_app     = {"python": "ipython --no-autoindent"}
 let cmdline_map_start = '<LocalLeader>t'
-let cmdline_map_send  = '<c-t>'
+let cmdline_map_send  = '<c-s>'
 
 " ctrlp ----------------
 let g:ctrlp_map = '<c-p>'
