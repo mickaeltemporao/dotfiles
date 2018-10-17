@@ -10,7 +10,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/vim-easy-align'
-Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -40,6 +39,8 @@ Plug 'junegunn/goyo.vim'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 
+" Devicons should be the last plugin loaded
+Plug 'ryanoasis/vim-devicons'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -122,9 +123,14 @@ map <leader>h :bprevious<cr>
 let g:nord_uniform_status_lines = 1
 
 " vimcmdline
-let g:cmdline_app     = {"python": "ipython --no-autoindent"}
-let cmdline_map_start = '<LocalLeader>t'
-let cmdline_map_send  = '<c-s>'
+let g:cmdline_app              = {"python": "ipython --no-autoindent"}
+let cmdline_map_start          = '<LocalLeader>t'
+let cmdline_map_send           = '<c-s>'
+let cmdline_vsplit             = 0
+let cmdline_term_width         = 80
+let cmdline_term_heigth        = 24
+let cmdline_in_buffer          = 1
+let cmdline_follow_colorscheme = 1
 
 " ctrlp ----------------
 let g:ctrlp_map = '<c-p>'
@@ -169,8 +175,6 @@ let g:airline#extensions#tmuxline#enabled = 1
 
 " vim-ditto ----------------
 " Use autocmds to check your text automatically and keep the highlighting
-" up to date (easier):
-au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
 nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
 
 " If you don't want the autocmds, you can also use an operator to check
@@ -243,10 +247,10 @@ set tabstop=4
 map <silent> <leader><cr> :noh<cr>
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/googledrive/buffer.md<cr>
+map <leader>q :e ~/.buffer.md<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/googledrive/buffer.py<cr>
+map <leader>x :e ~/.scratch.py<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -329,12 +333,6 @@ endfunction
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/googledrive/buffer.md<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/googledrive/buffer.R<cr>
 
 " Create the 'tags' file (requires ctags ? brew install ctags)
 let g:tagbar_type_r = {
