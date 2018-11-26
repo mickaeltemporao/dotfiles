@@ -6,6 +6,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 
@@ -48,3 +49,7 @@ set tabstop=4
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" Strip whitespace on save
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
