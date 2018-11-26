@@ -15,3 +15,36 @@ call plug#end()
 " vim-colors
 colorscheme nord
 set background=dark
+
+" Show line numbers
+set number
+
+" Highlight Over Length Lines
+set cc=80
+
+" allow to navigate between buffers without saving
+set hidden
+
+" Set System Clipboard by default
+set clipboard=unnamedplus
+
+" Map leader to space bar
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
+
+" Use spaces instead of tabs
+set expandtab
+
+" Tab navigation
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
+
+" Use spaces instead of tabs
+set expandtab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Fast saving
+nmap <leader>w :w!<cr>
