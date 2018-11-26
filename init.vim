@@ -5,9 +5,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jalvesaq/vimcmdline'
 Plug 'junegunn/vim-easy-align'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 
 " Initialize plugin system
@@ -53,3 +55,25 @@ nmap <leader>w :w!<cr>
 " Strip whitespace on save
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+" vimcmdline
+let g:cmdline_app              = {"python": "ipython --no-autoindent"}
+let cmdline_map_start          = '<LocalLeader>t'
+let cmdline_map_send           = '<c-s>'
+let cmdline_vsplit             = 0
+let cmdline_term_width         = 80
+let cmdline_term_heigth        = 24
+let cmdline_in_buffer          = 1
+let cmdline_follow_colorscheme = 1
+
+" Airline configuration
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#ctrlp#color_template = 'insert'
+let g:airline#extensions#tmuxline#enabled = 1
+
+" vim-fugitive
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
