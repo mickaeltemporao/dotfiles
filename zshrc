@@ -1,111 +1,28 @@
-#!/bin/zsh
-# File  : .zshrc
-# Author: Mickael Temporão <mickael at delphia dot com>
-#
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="hyperzsh"
+# The following lines were added by compinstall
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' use-compctl true
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/mt/.zshrc'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+autoload -Uz compinit
+compinit
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man colorize vi-mode zsh-syntax-highlighting)
-
-# User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+HISTFILE=~/.history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory autocd extendedglob
+bindkey -v
+# End of lines configured by zsh-newuser-install
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-alias -s R=vim
-alias -s txt=vim
-alias -s py=vim
-alias -s log="less -MN"
-alias -s html='open -a "Google Chrome Canary"'
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias pyproj="cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git"
-alias psd="python setup.py develop"
-
-[ -f .aliases ] && source .aliases
-
-google() {
-  open "https://www.google.com/search?q="$1
-}
-
-#alias tmux="TERM=screen-256color-bce tmux"
-export PATH="/usr/local/sbin:$PATH"
-
-# zle - zsh line editing module
-## Kill ESC key lag
-export KEYTIMEOUT=1
 
 # pyenv Configuration
 export PYENV_ROOT="$HOME/.pyenv"
@@ -114,5 +31,23 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# Aliases
+[ -f .aliases ] && source .aliases
+alias -s R=vim
+alias -s log="less -MN"
+alias -s py=vim
+alias -s txt=vim
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias psd="python setup.py develop"
+alias psh="pipenv shell"
+alias vim='nvim'
+alias vimdiff='nvim -d'
+
+# CSV quicklook
+function csv {
+    perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
+}
+
 # Startup display
 neofetch
+
