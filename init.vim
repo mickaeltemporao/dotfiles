@@ -5,12 +5,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jalvesaq/Nvim-R'
 Plug 'jalvesaq/vimcmdline'
 Plug 'junegunn/vim-easy-align'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-pandoc/vim-rmarkdown'
 
 " Initialize plugin system
 call plug#end()
@@ -77,3 +79,22 @@ let g:airline#extensions#tmuxline#enabled = 1
 
 " vim-fugitive
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" R environnment setup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: Fix R Tabulation Behaviour for Neovim
+
+"TODO: SETUP R Code linter
+" let g:syntastic_enable_r_lintr_checker = 1
+" let g:syntastic_r_checkers = ['lintr']
+
+" Disable underscore shortcut in Nvim-R
+let R_assign = 0
+
+" Set R Tabulation Behaviour
+autocmd FileType r setlocal shiftwidth=2 tabstop=2
+
+" Set file type for RMarkdown files
+autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
