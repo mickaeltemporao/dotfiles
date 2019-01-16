@@ -1,6 +1,9 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
@@ -9,17 +12,25 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'jalvesaq/vimcmdline'
 Plug 'junegunn/vim-easy-align'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'rstudio/rmarkdown'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'zchee/deoplete-jedi'
 
 " Initialize plugin system
 call plug#end()
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-colors
 colorscheme nord
-set background=dark
 
 " Show line numbers
 set number
@@ -95,6 +106,32 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" neosnippet
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" deoplete-jedi
+let g:python3_host_prog = '/home/mt/.local/share/virtualenvs/python-dev-YbpGQtBh/bin/python'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " R environnment setup
@@ -113,3 +150,30 @@ autocmd FileType r setlocal shiftwidth=2 tabstop=2
 
 " Set file type for RMarkdown files
 autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing <leader> ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+"Toggle Spelling On/Off & Switch
+function! ToggleSpellLang()
+    " toggle between en and fr
+    if &spelllang =~# 'en'
+        :set spelllang=fr
+    else
+        :set spelllang=en
+    endif
+endfunction
+nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
+nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
+
+
