@@ -66,6 +66,10 @@ set tabstop=4
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Persistent undo
+set undofile
+set undodir=~/.config/nvim/undo
+
 " Strip whitespace on save
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
