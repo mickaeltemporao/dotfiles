@@ -10,10 +10,12 @@ Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jalvesaq/vimcmdline'
-Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'lervag/vimtex'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'ron89/thesaurus_query.vim'
 Plug 'rstudio/rmarkdown'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -21,7 +23,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'ron89/thesaurus_query.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
@@ -171,9 +172,15 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LaTeX Environment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor='latex'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " R environnment setup
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: Fix R Tabulation Behaviour for Neovim
 
 "TODO: SETUP R Code linter
