@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vimwiki/vimwiki'
 Plug 'zchee/deoplete-jedi'
 
 " Initialize plugin system
@@ -69,7 +70,7 @@ set shiftwidth=4
 set tabstop=4
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>s :w!<cr>
 
 " Persistent undo
 set undofile
@@ -140,7 +141,9 @@ if has('conceal')
 endif
 
 " deoplete-jedi
-let g:python3_host_prog = '/home/mt/.local/share/virtualenvs/python-dev-YbpGQtBh/bin/python'
+let g:python3_host_prog = '/home/mt/.pyenv/versions/neovim3/bin/python'
+let g:python2_host_prog = '/home/mt/.pyenv/versions/neovim2/bin/python'
+
 
 " limelight
 " Color name (:help cterm-colors) or ANSI code
@@ -200,14 +203,6 @@ autocmd BufNewFile,BufRead *.Rmd   set filetype=rmarkdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing <leader> ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
 "Toggle Spelling On/Off & Switch
 function! ToggleSpellLang()
@@ -218,7 +213,6 @@ function! ToggleSpellLang()
         :set spelllang=en
     endif
 endfunction
+
 nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
 nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
-
-
