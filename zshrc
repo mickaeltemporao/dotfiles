@@ -16,6 +16,17 @@ setopt appendhistory autocd extendedglob
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+
+# Default web browser
+if [ -n "$DISPLAY" ]; then
+    export BROWSER=google-chrome
+else
+    export BROWSER=w3m
+fi
+
+# Default visual editor
+export VISUAL=nvim
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
@@ -60,3 +71,4 @@ vi-yank-x-selection () { print -rn -- $CUTBUFFER | xsel -i -p; }
 zle -N vi-yank-x-selection
 bindkey -a '^Y' vi-yank-x-selection
 eval "$(pyenv virtualenv-init -)"
+
