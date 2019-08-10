@@ -1,0 +1,12 @@
+alsamixer
+feh
+compton
+scrot
+nmcli
+ranger
+light
+volumeicon
+xclip
+nm-applet
+autorandr
+betterlockscreen
