@@ -38,6 +38,10 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
+
+# Lock screen
+bindsym $mod+9 exec betterlockcreen --lock blur
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -92,11 +96,11 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 ""
+set $ws1 ""
 set $ws2 ""
 set $ws3 ""
-set $ws4 ""
-set $ws5 "5"
+set $ws4 ""
+set $ws5 ""
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -277,7 +281,3 @@ exec --no-startup-id nm-applet
 
 # System Monitor
 # exec --no-startup-id conky -b &
-
-# Lock screen
-bindsym $mod+9 exec --no-startup-id betterlockcreen --lock blur
-
