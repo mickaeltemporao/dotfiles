@@ -17,9 +17,15 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 
+# Autostart X at login
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
+
 # Default web browser
 if [ -n "$DISPLAY" ]; then
-    export BROWSER=google-chrome
+    export BROWSER=google-chrome-stable
 else
     export BROWSER=w3m
 fi
@@ -45,6 +51,7 @@ alias psd="python setup.py develop"
 alias psh="pipenv shell"
 alias vim='nvim'
 alias vimdiff='nvim -d'
+alias ccat='highlight -l -O ansi --force'
 
 # CSV quicklook
 function csv {
@@ -72,3 +79,5 @@ zle -N vi-yank-x-selection
 bindkey -a '^Y' vi-yank-x-selection
 eval "$(pyenv virtualenv-init -)"
 
+# Welcome Screen
+screenfetch -t
