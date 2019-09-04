@@ -69,9 +69,11 @@ XTerm*selectToClipboard: true
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                     2
 
-#define font1         InputMono
-#define font2         InputMono Nerd Font
-#define font3         DejaVu Sans Mono Nerd Font
+/* #define font1         InputMono */
+/* #define font1         Fura Mono Bold Nerd Font Complete Mono */
+
+#define font1         DejaVu Sans Mono Nerd Font
+#define font3         DejaVu Sans Mono
 #define font4         Noto Sans Mono
 
 URxvt*letterSpace: 0
