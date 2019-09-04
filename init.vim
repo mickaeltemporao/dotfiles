@@ -75,6 +75,8 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" ignore case
+set ic
 
 " vim-colors
 colorscheme nord
@@ -189,7 +191,9 @@ autocmd! User GoyoLeave Limelight!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LaTeX Environment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor='latex'
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
+" let g:vimtex_complete_bib = { 'simple': 1 }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
