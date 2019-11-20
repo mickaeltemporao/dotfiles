@@ -142,7 +142,8 @@ nnoremap <Leader>o :CtrlPBuffer<CR>
 " Open most recently used files
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
-" Nerd Tree
+" NERDTree
+autocmd BufEnter * call SyncTree()
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -150,6 +151,20 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
+
+" COC
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+" prettier command for coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
