@@ -143,7 +143,6 @@ nnoremap <Leader>o :CtrlPBuffer<CR>
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
 " NERDTree
-autocmd BufEnter * call SyncTree()
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -164,6 +163,9 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-python',
   \ ]
 
 
