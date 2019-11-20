@@ -1,16 +1,6 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -29,6 +19,7 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'rstudio/rmarkdown'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'szymonmaszke/vimpyter'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -51,8 +42,8 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 
 " deoplete-jedi
-let g:python3_host_prog = '/home/mt/.pyenv/versions/neovim3/bin/python'
 let g:python2_host_prog = '/home/mt/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/mt/.pyenv/versions/neovim3/bin/python'
 
 " neosnippet
 " Plugin key-mappings.
@@ -70,10 +61,13 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
+" Avoid conceal markers.
+" set conceallevel=0
+
 " For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 " ignore case
 set ic
@@ -119,6 +113,8 @@ set undodir=~/.config/nvim/undo
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
+" Read .pdf, .doc, .odt, .rtf in vim!
+autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt silent %!pandoc "%" -tplain -o /dev/stdout
 " vimcmdline
 let g:cmdline_app              = {"python": "ipython --no-autoindent"}
 let cmdline_map_start          = '<LocalLeader>t'
@@ -194,6 +190,15 @@ autocmd! User GoyoLeave Limelight!
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 " let g:vimtex_complete_bib = { 'simple': 1 }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ipython / Jupyter Environment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
