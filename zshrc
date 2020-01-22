@@ -52,6 +52,7 @@ alias psh="pipenv shell"
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ccat='highlight -l -O ansi --force'
+alias wifi='nmcli d wifi list'
 
 # CSV quicklook
 function csv {
@@ -78,6 +79,14 @@ vi-yank-x-selection () { print -rn -- $CUTBUFFER | xsel -i -p; }
 zle -N vi-yank-x-selection
 bindkey -a '^Y' vi-yank-x-selection
 eval "$(pyenv virtualenv-init -)"
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /home/mt/.pyenv/versions/3.8.0/bin/virtualenvwrapper.sh
+
+# Modify path for Python's poetry dependency management system
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # Welcome Screen
 screenfetch -t
