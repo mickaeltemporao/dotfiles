@@ -276,8 +276,5 @@ bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 # scrot & gimp - select window or rectangle
 bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
-# Wifi-Status
-exec --no-startup-id nm-applet
-
 # System Monitor
 # exec --no-startup-id conky -b &
