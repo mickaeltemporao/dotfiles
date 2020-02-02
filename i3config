@@ -158,9 +158,12 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    mode hide
+    hidden_state hide
+    modifier $mod
 	i3bar_command i3bar
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	position bottom
+	position top
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
@@ -265,7 +268,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
 
 # Wallpapaer
-exec_always feh --bg-scale ~/Pictures/planks.jpg --scale-down --auto-zoom
+exec_always feh --bg-scale ~/Pictures/glider_wp.jpg --scale-down --auto-zoom
 
 # Fading effect
 exec_always compton -f
