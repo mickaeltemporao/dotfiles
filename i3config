@@ -265,7 +265,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
 
 # Wallpapaer
-exec_always feh --bg-scale ~/Pictures/glider_wp.jpg --scale-down --auto-zoom
+exec_always feh --bg-scale ~/Pictures/black_wp.jpg --scale-down --auto-zoom
 
 # Fading effect
 exec_always compton -f
