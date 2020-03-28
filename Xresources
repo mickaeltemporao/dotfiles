@@ -105,6 +105,15 @@ URxvt.keysym.Shift-Control-Up:    \033[1;6A
 URxvt.keysym.Control-Down:        \033[1;5B
 URxvt.keysym.Shift-Control-Down:  \033[1;6B
 
-!! Extensions
-URxvt.perl-ext-common:            default,resize-font
+!! Extensions:
+URxvt.perl-ext-common:            default,matcher,resize-font,url-select,keyboard-select
+!! matcher:
+URxvt.url-launcher:               /usr/bin/xdg-open
+URxvt.matcher.button:             1
+!! url-select:
+URxvt.keysym.M-u:                 perl:url-select:select_next
+URxvt.url-select.launcher:        /usr/bin/xdg-open
+URxvt.url-select.underline:       true
+!! keyboard-select:
+URxvt.keysym.M-Escape:            perl:keyboard-select:activate
 
