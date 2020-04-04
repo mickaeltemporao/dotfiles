@@ -1,23 +1,22 @@
 " Specify a directory for plugins
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
@@ -29,8 +28,8 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => TESTS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" In insert mode use 'ui' as Escape key
-    :inoremap ui <esc>
+" In insert mode use 'qw' as Escape key
+    :inoremap qw <esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,7 +72,7 @@ map <leader>h :bprevious<cr>
 " Use spaces instead of tabs
 set expandtab
 
-" 1 tab == 4 spaces
+" Replace tab with 4 spaces
 set shiftwidth=4
 set tabstop=4
 
@@ -83,10 +82,6 @@ nmap <leader>s :w!<cr>
 " Persistent undo
 set undofile
 set undodir=~/.config/nvim/undo
-
-" Strip whitespace on save
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
 
 " Read .pdf, .doc, .odt, .rtf in vim!
 autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt silent %!pandoc "%" -tplain -o /dev/stdout
@@ -100,17 +95,20 @@ let cmdline_term_heigth        = 24
 let cmdline_in_buffer          = 1
 let cmdline_follow_colorscheme = 1
 
-" Airline configuration
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#ctrlp#color_template = 'insert'
-let g:airline#extensions#tmuxline#enabled = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
 
 " vim-fugitive
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" vimwiki
+let g:vimwiki_list = [ {'path': '~/Documents/vimwiki'} ]
 
 " ctrlP
 " Open buffer menu
