@@ -43,6 +43,9 @@ call plug#end()
 "   set conceallevel=2 concealcursor=niv
 " endif
 
+" delete trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
+
 " ignore case
 set ic
 
