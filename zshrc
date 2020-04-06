@@ -90,3 +90,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # Welcome Screen
 screenfetch -t
+
+# VIM GNUPG
+export GPG_TTY="tty"
+export GNUPGHOME="$HOME/.config/gnupg"
+
