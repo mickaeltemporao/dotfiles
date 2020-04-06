@@ -111,7 +111,14 @@ let g:lightline = {
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " vimwiki
-let g:vimwiki_list = [ {'path': '~/Documents/vimwiki'} ]
+let g:vimwiki_list = [ {'path': '~/Documents/notes', 'syntax': 'markdown', 'ext': '.gpg.wiki'}]
+
+" vim-gnupg
+let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)\(.wiki\)\='
+" Armor files
+let g:GPGPreferArmor=1
+" Set the default option
+let g:GPGDefaultRecipients=["your@email.com"]
 
 " ctrlP
 " Open buffer menu
