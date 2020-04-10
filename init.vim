@@ -55,6 +55,9 @@ colorscheme nord
 " Show line numbers
 set number
 
+" avoid wrapping lines in the middle of a word
+set linebreak
+
 " Highlight Over Length Lines
 set cc=80
 
