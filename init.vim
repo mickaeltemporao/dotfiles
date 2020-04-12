@@ -121,7 +121,7 @@ let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)\(.wiki\)\='
 " Armor files
 let g:GPGPreferArmor=1
 " Set the default option
-let g:GPGDefaultRecipients=["your@email.com"]
+let g:GPGDefaultRecipients=["mickael.temporao@gmail.com"]
 
 " ctrlP
 " Open buffer menu
