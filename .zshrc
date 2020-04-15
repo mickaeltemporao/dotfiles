@@ -345,8 +345,6 @@ alias -s log="less -MN"
 alias vimdiff="nvim -d"
 alias ccat="highlight -l -O ansi --force"
 alias wifi="nmcli d wifi list"
-# alias timestamp=`date +'%Y-%m-%d %H:%M:%S'`
-# alias gcm="git commit -m auto-commit on" $timestamp"
 
 # VIM GNUPG
 export GPG_TTY=$(tty)
@@ -362,30 +360,14 @@ neofetch --disable gpu --color_blocks off
 #     export BROWSER=w3m
 # fi
 
-# Default visual editor
-# export VISUAL=nvim # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='nvim'
-# else
-#   export EDITOR='nvim'
-# fi
+# Default editor
+export VISUAL=nvim # Preferred editor for local and remote sessions
+export EDITOR=nvim # Preferred editor for local and remote sessions
 
 # CSV quicklook
 # function csv {
 #     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 # }
-
-# pyenv Configuration (Needs to be at the end of the file)
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
-
-# The next line updates PATH for the Google Cloud SDK.
-# source /opt/google-cloud-sdk/path.zsh.inc
-# The next line enables zsh completion for gcloud.
-# source /opt/google-cloud-sdk/completion.zsh.inc
 
 # Copy-paste Clipboard ZSH VI-Mode
 # vi-append-x-selection () { RBUFFER=$(xsel -o -p </dev/null)$RBUFFER; }
@@ -430,11 +412,6 @@ extract () {
   fi
 }
 
-export PYENV_ROOT="/usr/share/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/home/mt/google-cloud-sdk/path.zsh.inc'
@@ -457,4 +434,19 @@ opass() {
   opon
   op get item "$1" |jq -r '.details.fields[] |select(.designation=="password").value' | xclip -selection clipboard
   opoff
+}
+
+# pyenv config (should be at the end of the file)
+export PYENV_ROOT="/usr/share/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+gcp () {
+    timestamp=`date +'%Y-%m-%d %H:%M:%S'`
+    git pull
+    git add *
+    git commit -m "commit on" $timestamp
+    git push
 }
