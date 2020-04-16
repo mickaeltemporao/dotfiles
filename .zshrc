@@ -418,7 +418,7 @@ source '/home/mt/google-cloud-sdk/path.zsh.inc'
 # The next line enables bash completion for gcloud.
 source '/home/mt/google-cloud-sdk/completion.zsh.inc'
 
-# 1password utilities
+# 1password utils
 opon() {
   if [[ -z $OP_SESSION_my ]]; then
     eval $(op signin my)
@@ -444,9 +444,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 gcp () {
-    timestamp=`date +'%Y-%m-%d %H:%M:%S'`
     git pull
     git add *
-    git commit -m "commit on" $timestamp
+    git commit -m "update on `date +'%Y-%m-%d %H:%M:%S'`"
     git push
 }
+
