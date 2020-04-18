@@ -436,13 +436,6 @@ opass() {
   opoff
 }
 
-# pyenv config (should be at the end of the file)
-export PYENV_ROOT="/usr/share/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
 gcp () {
     git pull
     git add *
