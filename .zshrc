@@ -346,48 +346,12 @@ alias vimdiff="nvim -d"
 alias ccat="highlight -l -O ansi --force"
 alias wifi="nmcli d wifi list"
 
-# VIM GNUPG
-export GPG_TTY=$(tty)
-export GNUPGHOME="$HOME/.config/gnupg"
-
-# Welcome Screen
-neofetch --disable gpu --color_blocks off
-
-# Default web browser
-# if [ -n "$DISPLAY" ]; then
-#     export BROWSER=google-chrome-stable
-# else
-#     export BROWSER=w3m
-# fi
-
-# Default editor
-export VISUAL=nvim # Preferred editor for local and remote sessions
-export EDITOR=nvim # Preferred editor for local and remote sessions
-
 # CSV quicklook
-# function csv {
-#     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
-# }
+csv {
+    perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
+}
 
-# Copy-paste Clipboard ZSH VI-Mode
-# vi-append-x-selection () { RBUFFER=$(xsel -o -p </dev/null)$RBUFFER; }
-# zle -N vi-append-x-selection
-# bindkey -a '^X' vi-append-x-selection
-# vi-yank-x-selection () { print -rn -- $CUTBUFFER | xsel -i -p; }
-# zle -N vi-yank-x-selection
-# bindkey -a '^Y' vi-yank-x-selection
-# eval "$(pyenv virtualenv-init -)"
-
-# virtualenvwrapper
-# Modify path for Python's poetry dependency management system
-# export WORKON_HOME=$HOME/.virtualenvs
-# export PROJECT_HOME=$HOME/Devel
-# source /home/mt/.pyenv/versions/3.8.0/bin/virtualenvwrapper.sh
-
-# Modify path for Python's poetry dependency management system
-# export PATH="$HOME/.poetry/bin:$PATH"
-
-# Custom Extracting Functio
+# Extraction Function
 extract () {
   if [ -f $1 ] ; then
     case $1 in
@@ -411,12 +375,6 @@ extract () {
     echo "\`$1' is not a valid file"
   fi
 }
-
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/home/mt/google-cloud-sdk/path.zsh.inc'
-# The next line enables bash completion for gcloud.
-source '/home/mt/google-cloud-sdk/completion.zsh.inc'
 
 # 1password utils
 opon() {
@@ -443,3 +401,17 @@ gcp () {
     git push
 }
 
+# Default editor
+export VISUAL=nvim # Preferred editor for local and remote sessions
+export EDITOR=nvim # Preferred editor for local and remote sessions
+
+# VIM GNUPG
+export GPG_TTY=$(tty)
+export GNUPGHOME="$HOME/.config/gnupg"
+
+# PATH for Google Cloud SDK & completion
+source '/home/mt/google-cloud-sdk/path.zsh.inc'
+source '/home/mt/google-cloud-sdk/completion.zsh.inc'
+
+# Welcome Screen
+neofetch --disable gpu --color_blocks off
