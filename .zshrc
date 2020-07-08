@@ -163,47 +163,6 @@ fi
 ## '.' though. If you want that too, use the following line:
 #zstyle ':completion:*' special-dirs true
 
-## aliases ##
-
-## translate
-#alias u='translate -i'
-
-## ignore ~/.ssh/known_hosts entries
-#alias insecssh='ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null" -o "PreferredAuthentications=keyboard-interactive"'
-
-
-## global aliases (for those who like them) ##
-
-#alias -g '...'='../..'
-#alias -g '....'='../../..'
-#alias -g BG='& exit'
-#alias -g C='|wc -l'
-#alias -g G='|grep'
-#alias -g H='|head'
-#alias -g Hl=' --help |& less -r'
-#alias -g K='|keep'
-#alias -g L='|less'
-#alias -g LL='|& less -r'
-#alias -g M='|most'
-#alias -g N='&>/dev/null'
-#alias -g R='| tr A-z N-za-m'
-#alias -g SL='| sort | less'
-#alias -g S='| sort'
-#alias -g T='|tail'
-#alias -g V='| vim -'
-
-## instead of global aliase it might be better to use grmls $abk assoc array, whose contents are expanded after pressing ,.
-#$abk[SnL]="| sort -n | less"
-
-## get top 10 shell commands:
-#alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
-
-## Execute \kbd{./configure}
-#alias CO="./configure"
-
-## Execute \kbd{./configure --help}
-#alias CH="./configure --help"
-
 ## miscellaneous code ##
 
 ## Use a default width of 80 for manpages for more convenient reading
@@ -345,9 +304,13 @@ alias -s log="less -MN"
 alias vimdiff="nvim -d"
 alias ccat="highlight -l -O ansi --force"
 alias wifi="nmcli d wifi list"
+alias noise="play -n -q synth 2:0:0 brownnoise synth pinknoise mix synth sine amod 0 10 &"
+alias halfnoise="play -n -q synth 1:0:0 brownnoise synth pinknoise mix synth sine amod 0 10 &"
+alias solo="autorandr --load solo"
+alias home="autorandr --load home"
 
 # CSV quicklook
-csv {
+csv () {
     perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K
 }
 
@@ -396,9 +359,15 @@ opass() {
 
 gcp () {
     git pull
-    git add *
-    git commit -m "update on `date +'%Y-%m-%d %H:%M:%S'`"
+    git add *.wiki
+    git commit -m "update: `date +'%Y-%m-%d %H:%M:%S'`"
     git push
+}
+
+gc () {
+    git pull
+    git add *.wiki
+    git commit -m "update: `date +'%Y-%m-%d %H:%M:%S'`"
 }
 
 # Default editor
@@ -414,4 +383,12 @@ source '/home/mt/google-cloud-sdk/path.zsh.inc'
 source '/home/mt/google-cloud-sdk/completion.zsh.inc'
 
 # Welcome Screen
-neofetch --disable gpu --color_blocks off
+neofetch --disable gpu --color_blocks off --gtk3 off
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
