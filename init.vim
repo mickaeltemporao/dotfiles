@@ -1,28 +1,29 @@
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-css-color'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
+Plug 'jalvesaq/nvim-r'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ap/vim-css-color'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
-
 
 " Initialize plugin system
 call plug#end()
@@ -92,8 +93,17 @@ nmap <leader>s :w!<cr>
 set undofile
 set undodir=~/.config/nvim/undo
 
+" Auto-save
+autocmd CursorHold,CursorHoldI * update
+
 " Read .pdf, .doc, .odt, .rtf in vim!
 autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt silent %!pandoc "%" -tplain -o /dev/stdout
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " vimcmdline
 let g:cmdline_app              = {"python": "ipython --no-autoindent"}
 let cmdline_map_start          = '<LocalLeader>t'
@@ -104,10 +114,6 @@ let cmdline_term_heigth        = 24
 let cmdline_in_buffer          = 1
 let cmdline_follow_colorscheme = 1
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'nord',
@@ -131,6 +137,8 @@ let g:GPGDefaultRecipients=["mickael.temporao@gmail.com"]
 nnoremap <Leader>o :CtrlPBuffer<CR>
 " Open most recently used files
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
+" Ignore files
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
 
 " NERDTree
 let g:NERDTreeWinPos = "right"
@@ -286,7 +294,7 @@ let g:vimtex_view_method = 'zathura'
 " let g:vimtex_complete_bib = { 'simple': 1 }
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " R environnment setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: Fix R Tabulation Behaviour for Neovim
@@ -303,6 +311,13 @@ autocmd FileType r setlocal shiftwidth=2 tabstop=2
 
 " Set file type for RMarkdown files
 autocmd BufNewFile,BufRead *.Rmd set filetype=rmarkdown
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python environnment setup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
