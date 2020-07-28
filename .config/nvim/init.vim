@@ -93,9 +93,6 @@ nmap <leader>s :w!<cr>
 set undofile
 set undodir=~/.config/nvim/undo
 
-" Auto-save
-autocmd CursorHold,CursorHoldI * update
-
 " Read .pdf, .doc, .odt, .rtf in vim!
 autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt silent %!pandoc "%" -tplain -o /dev/stdout
 
