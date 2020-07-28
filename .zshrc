@@ -86,11 +86,11 @@ export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME/.config/gnupg"
 
 # PATH for Google Cloud SDK & completion
-source '/home/mt/google-cloud-sdk/path.zsh.inc'
-source '/home/mt/google-cloud-sdk/completion.zsh.inc'
+# source '/home/mt/google-cloud-sdk/path.zsh.inc'
+# source '/home/mt/google-cloud-sdk/completion.zsh.inc'
 
 # Welcome Screen
-neofetch --disable gpu --color_blocks off --gtk3 off
+# neofetch --disable gpu --color_blocks off --gtk3 off
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
