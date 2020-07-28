@@ -1,9 +1,10 @@
-alsamixer
+alsa-utils
 feh
 compton
+rofi
 scrot
-nmcli
-ranger
+iwd
+lf
 light
 volumeicon
 xclip
