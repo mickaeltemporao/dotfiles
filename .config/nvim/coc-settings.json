@@ -1,0 +1,4 @@
+{
+    "python.jediEnabled": false,
+    "npm.binPath": "/usr/bin/node"
+}
