@@ -72,10 +72,6 @@ set clipboard=unnamedplus
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-" Tab navigation
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
 " Use spaces instead of tabs
 set expandtab
 
@@ -93,6 +89,25 @@ set undodir=~/.config/nvim/undo
 " Read .pdf, .doc, .odt, .rtf in vim!
 autocmd BufReadPost *.doc,*.docx,*.rtf,*.odp,*.odt silent %!pandoc "%" -tplain -o /dev/stdout
 
+" tabs
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tm  :tabm<Space>
+nnoremap tn  :tabnew<CR>
+nnoremap td  :tabclose<CR>
+
+" netrw
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
