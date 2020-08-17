@@ -25,7 +25,6 @@ Plug 'vimwiki/vimwiki'
 " Initialize plugin system
 call plug#end()
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => TESTS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,8 +96,8 @@ nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
 
 nnoremap th  :tabfirst<CR>
-nnoremap tk  :tabnext<CR>
-nnoremap tj  :tabprev<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
 nnoremap tl  :tablast<CR>
 nnoremap tt  :tabedit<Space>
 nnoremap tm  :tabm<Space>
@@ -312,6 +311,12 @@ autocmd FileType r setlocal shiftwidth=2 tabstop=2
 " Set file type for RMarkdown files
 autocmd BufNewFile,BufRead *.Rmd set filetype=rmarkdown
 
+"radion Nvim-R support
+let R_app = "radian"
+let R_cmd = "R"
+let R_hl_term = 0
+let R_args = []  " if you had set any
+let R_bracketed_paste = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " python environnment setup
@@ -333,6 +338,9 @@ function! ToggleSpellLang()
         :set spelllang=en
     endif
 endfunction
-
 nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
 nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
+
+" vifm pdf scrolling
+" map > :!vifmimg inc<CR>
+" map < :!vifmimg dec<CR>
