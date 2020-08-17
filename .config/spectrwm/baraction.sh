@@ -4,19 +4,19 @@
 # Tested on: Debian 10, Fedora 31.
 #
 
-print_date() {
-	# The date is printed to the status bar by default.
-	# To print the date through this script, set clock_enabled to 0
-	# in spectrwm.conf.  Uncomment "print_date" below.
-	FORMAT="%a %b %d %R %Z %Y"
-	DATE=`date "+${FORMAT}"`
-	echo -n "${DATE}     "
-}
-
-# print_mem() {
-# 	MEM=`/usr/bin/free -m | grep ^Mem: | sed -E 's/ +/ /g' | cut -d ' ' -f4`
-# 	echo -n "Free mem: ${MEM}M  "
+# print_date() {
+# 	# The date is printed to the status bar by default.
+# 	# To print the date through this script, set clock_enabled to 0
+# 	# in spectrwm.conf.  Uncomment "print_date" below.
+# 	FORMAT="%a %b %d %R %Z %Y"
+# 	DATE=`date "+${FORMAT}"`
+# 	echo -n "${DATE}     "
 # }
+
+print_mem() {
+	MEM=`/usr/bin/free -m | grep ^Mem: | sed -E 's/ +/ /g' | cut -d ' ' -f4`
+	echo -n " ${MEM}MB | "
+}
 
 # _print_cpu() {
 # 	printf "CPU: %3d%% User %3d%% Nice %3d%% Sys %3d%% Idle  " $1 $2 $3 $6
@@ -32,10 +32,10 @@ print_date() {
 # 	_print_cpu $OUT
 # }
 
-# print_cpuspeed() {
-# 	CPU_SPEED=`/usr/bin/lscpu | grep '^CPU MHz:' | sed -E 's/ +/ /g' | cut -d ' ' -f3 | cut -d '.' -f1`
-# 	printf "CPU speed: %4d MHz  " $CPU_SPEED
-# }
+print_cpuspeed() {
+	CPU_SPEED=`/usr/bin/lscpu | grep '^CPU MHz:' | sed -E 's/ +/ /g' | cut -d ' ' -f3 | cut -d '.' -f1`
+	printf "CPU: %4d MHz | " $CPU_SPEED
+}
 
 print_bat() {
 	AC_STATUS="$3"
@@ -50,11 +50,11 @@ print_bat() {
 
 	if [ "$AC_STATUS" != "" -o "$BAT_STATUS" != "" ]; then
 		if [ "$BAT_STATUS" = "Discharging," ]; then
-			echo -n "|  $BAT_LEVEL  |"
+			echo -n "$BAT_LEVEL"
 		else
 			case "$AC_STATUS" in
 			on-line)
-				AC_STRING="on AC: "
+				AC_STRING="AC: "
 				;;
 			*)
 				AC_STRING=""
@@ -65,7 +65,7 @@ print_bat() {
 				BAT_STRING="(no battery)"
 				;;
 			*harging,|Full,)
-				BAT_STRING="(battery $BAT_LEVEL)"
+				BAT_STRING="$BAT_LEVEL"
 				;;
 			*)
 				BAT_STRING="(battery unknown)"
