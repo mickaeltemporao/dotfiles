@@ -1,0 +1,6 @@
+[user]
+	name = Mickael Temporão
+	email = 16172142+mickaeltemporao@users.noreply.github.com
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore
