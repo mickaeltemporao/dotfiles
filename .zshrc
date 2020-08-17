@@ -3,18 +3,16 @@
 ################################################################################
 
 # Aliases
+alias fm="~/.config/vifm/scripts/vifmrun"
 alias vim="nvim"
 alias -s R=vim
 alias -s py=vim
 alias -s txt=vim
 alias -s log="less -MN"
+alias R="radian"
 alias vimdiff="nvim -d"
 alias cat="highlight -l -O ansi --force"
-alias wifi="nmcli d wifi list"
 alias noise="play -n -q synth 2:0:0 brownnoise synth pinknoise mix synth sine amod 0 10 &"
-alias halfnoise="play -n -q synth 1:0:0 brownnoise synth pinknoise mix synth sine amod 0 10 &"
-alias solo="autorandr --load solo"
-alias home="autorandr --load home"
 
 # CSV quicklook
 csv () {
@@ -77,13 +75,9 @@ gc () {
     git commit -m "update: `date +'%Y-%m-%d %H:%M:%S'`"
 }
 
-# Default editor
-export VISUAL=nvim # Preferred editor for local and remote sessions
-export EDITOR=nvim # Preferred editor for local and remote sessions
-
 # VIM GNUPG
 export GPG_TTY=$(tty)
-export GNUPGHOME="$HOME/.config/gnupg"
+# export GNUPGHOME="$HOME/.config/gnupg"
 
 # PATH for Google Cloud SDK & completion
 # source '/home/mt/google-cloud-sdk/path.zsh.inc'
