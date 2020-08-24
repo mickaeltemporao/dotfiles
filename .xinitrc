@@ -1,5 +1,7 @@
-feh --bg-scale ~/Pictures/wallpaper_4.jpg &
+feh --bg-scale ~/.config/wallpaper.jpg &
 picom --experimental-backends &
 dunst &
-exec bspwm
+unclutter &
+dwmblocks &
+exec dwm
 
