@@ -1,4 +1,5 @@
 {
     "python.jediEnabled": false,
-    "npm.binPath": "/usr/bin/node"
+    "npm.binPath": "/usr/bin/node",
+    "suggest.noselect": false
 }
