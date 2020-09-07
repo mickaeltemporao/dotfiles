@@ -1,8 +1,6 @@
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-css-color'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
