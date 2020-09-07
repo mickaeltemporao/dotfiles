@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "", "", "", "",  "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -39,9 +39,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "| ",      tile },    /* first entry is default */
+	{ "| ",      NULL },    /* no layout function means floating behavior */
+	{ "| ",      monocle },
 };
 
 /* key definitions */
@@ -60,20 +60,19 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *filemanagercmd[]  = { "alacritty", "-e", "vifm" };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *browsercmd[]  = { "qutebrowser", NULL };
 
 #include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_e,      spawn,          {.v = filemanagercmd} },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("rofi -font \"Input Mono 20\" -show drun -icon-theme \"Papirus\" -show-icons") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd} },
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("qutebrowser") }
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("qutebrowser :command \":open -p") }
     { MODKEY,			            XK_c,	   spawn,		   SHCMD("alacritty -e nvim ~/.config") },
-	/* { MODKEY|ShiftMask,             XK_w,      spawn,          {.v = privatebrowsercmd} }, */
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 5") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("light -U 5") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 1") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("light -U 1") },
 	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("amixer -q sset Master toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("amixer -q sset Master 5%+") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("amixer -q sset Master 5%-") },
@@ -105,8 +104,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    /* { 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("light -A 5 && pkill -RTMIN+11 dwmblocks") }, */
-    /* { 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("light -U 5 && pkill -RTMIN+11 dwmblocks") }, */
 };
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
