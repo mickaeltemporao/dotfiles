@@ -68,8 +68,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = filemanagercmd} },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("rofi -font \"Input Mono 20\" -show drun -icon-theme \"Papirus\" -show-icons") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("qutebrowser") }
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("qutebrowser :command \":open -p") }
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("qutebrowser") },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("qutebrowser :command \":open -p") },
     { MODKEY,			            XK_c,	   spawn,		   SHCMD("alacritty -e nvim ~/.config") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 1") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("light -U 1") },
