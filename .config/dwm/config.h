@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "",  "" };
+static const char *tags[] = { "", "", "", "",  "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -58,7 +58,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *filemanagercmd[]  = { "alacritty", "-e", "vifm" };
+static const char *filemanagercmd[]  = { "alacritty", "-e", "/home/mt/.config/vifm/scripts/vifmrun" };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 #include <X11/XF86keysym.h>
@@ -69,7 +69,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("rofi -font \"Input Mono 20\" -show drun -icon-theme \"Papirus\" -show-icons") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("qutebrowser") },
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("qutebrowser :command \":open -p") },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("qutebrowser :command \":open -p\"") },
     { MODKEY,			            XK_c,	   spawn,		   SHCMD("alacritty -e nvim ~/.config") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 1") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("light -U 1") },
