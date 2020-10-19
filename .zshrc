@@ -3,7 +3,7 @@
 ################################################################################
 
 # Aliases
-alias fm="~/.config/vifm/scripts/vifmrun"
+alias vifm="~/.config/vifm/scripts/vifmrun ."
 alias vim="nvim"
 alias -s R=vim
 alias -s py=vim
