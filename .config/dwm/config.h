@@ -77,8 +77,13 @@ static Key keys[] = {
 	{ 0,                  XF86XK_AudioRaiseVolume,	spawn,          SHCMD("amixer -q sset Master 5%+") },
 	{ 0,                  XF86XK_AudioLowerVolume,	spawn,          SHCMD("amixer -q sset Master 5%-") },
 	{ 0,                  XF86XK_AudioMicMute,	    spawn,          SHCMD("amixer -q sset Capture toggle") },
-	{ 0,                  XK_Print,	                spawn,          SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+
+	{ 0,                  XK_Print,	                spawn,          SHCMD("maim ~/Pictures/pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,          XK_Print,                 spawn,          SHCMD("maimpick") },
+
+	{ MODKEY,             XK_Print,                 spawn,          SHCMD("ffmpeg -video_size \"$(xdpyinfo | grep dimensions | awk '{print $2;}')\" -framerate 25 -f x11grab -i \"$DISPLAY\" -f alsa -ac 2 -i hw:0 \"$HOME/Videos/video-$(date '+%y%m%d-%H%M-%S').mkv\"") },
+	{ MODKEY,             XK_Delete,	            spawn,		    SHCMD("killall ffmpeg") },
+
 	{ MODKEY,             XK_b,                     togglebar,      {0} },
 	{ MODKEY,             XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,             XK_k,                     focusstack,     {.i = -1 } },
