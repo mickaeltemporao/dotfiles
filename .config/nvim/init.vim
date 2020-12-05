@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'chrisbra/csv.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/nvim-r'
 Plug 'jalvesaq/vimcmdline'
