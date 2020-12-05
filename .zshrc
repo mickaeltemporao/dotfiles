@@ -13,6 +13,7 @@ alias R="radian"
 alias vimdiff="nvim -d"
 alias cat="highlight -l -O ansi --force"
 alias noise="play -n -q synth 2:0:0 brownnoise synth pinknoise mix synth sine amod 0 10 &"
+alias cours="cd ~/Documents/scpobx/cours"
 
 # CSV quicklook
 csv () {
@@ -74,6 +75,15 @@ gc () {
     git add *.wiki
     git commit -m "update: `date +'%Y-%m-%d %H:%M:%S'`"
 }
+
+gitup () {
+    git pull
+    git add *.html *.Rmd docs/
+    git commit -m "website update on `date +'%Y-%m-%d %H:%M:%S'`"
+    git push
+}
+
+
 
 # VIM GNUPG
 export GPG_TTY=$(tty)
