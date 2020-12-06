@@ -1,22 +1,29 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows */
+static const unsigned int gappov    = 10;       /* vert outer gap between windows */
+static const int smartgaps          = 0;        /* 1 = no outer gaps on single win*/
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
+/* static const int tbpad              = 8;        */
+/* static const int lrpad              = 20;       */
 static const char *fonts[]          = { "Input Mono:size=12", "Input Serif:size=12", "Font Awesome:size=12", "Joypixels:size=12" };
 static const char dmenufont[]       = "Input Mono:size=10";
-
-static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#000000";
-static const char col_gray3[]       = "#D8DEE9";
-static const char col_gray4[]       = "#ECEFF4";
-static const char col_cyan[]        = "#5E81AC";
+static const char col_gray1[]       = "#222222";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_thinkpad[]    = "#e60012";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+    /*                fg         bg             border   */
+    [SchemeNorm]  = { col_gray3, col_gray1,     col_gray2    },
+    [SchemeSel]   = { col_gray4, col_thinkpad,  col_thinkpad },
+    /* [SchemeTitle] = { col_gray4, col_gray1,     col_gray1    }, */
 };
 
 /* tagging */
@@ -57,7 +64,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_thinkpad, "-sf", col_gray4, NULL };
 static const char *filemanagercmd[]  = { "alacritty", "-e", "/home/mt/.config/vifm/scripts/vifmrun" };
 static const char *termcmd[]  = { "alacritty", NULL };
 
@@ -77,13 +84,10 @@ static Key keys[] = {
 	{ 0,                  XF86XK_AudioRaiseVolume,	spawn,          SHCMD("amixer -q sset Master 5%+") },
 	{ 0,                  XF86XK_AudioLowerVolume,	spawn,          SHCMD("amixer -q sset Master 5%-") },
 	{ 0,                  XF86XK_AudioMicMute,	    spawn,          SHCMD("amixer -q sset Capture toggle") },
-
 	{ 0,                  XK_Print,	                spawn,          SHCMD("maim ~/Pictures/pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,          XK_Print,                 spawn,          SHCMD("maimpick") },
-
 	{ MODKEY,             XK_Print,                 spawn,          SHCMD("ffmpeg -video_size \"$(xdpyinfo | grep dimensions | awk '{print $2;}')\" -framerate 25 -f x11grab -i \"$DISPLAY\" -f alsa -ac 2 -i hw:0 \"$HOME/Videos/video-$(date '+%y%m%d-%H%M-%S').mkv\"") },
 	{ MODKEY,             XK_Delete,	            spawn,		    SHCMD("killall ffmpeg") },
-
 	{ MODKEY,             XK_b,                     togglebar,      {0} },
 	{ MODKEY,             XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,             XK_k,                     focusstack,     {.i = -1 } },
