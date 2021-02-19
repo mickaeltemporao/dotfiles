@@ -84,14 +84,9 @@ gitup () {
 }
 
 
-
 # VIM GNUPG
 export GPG_TTY=$(tty)
 # export GNUPGHOME="$HOME/.config/gnupg"
-
-# PATH for Google Cloud SDK & completion
-# source '/home/mt/google-cloud-sdk/path.zsh.inc'
-# source '/home/mt/google-cloud-sdk/completion.zsh.inc'
 
 # Welcome Screen
 # neofetch --disable gpu --color_blocks off --gtk3 off
@@ -103,7 +98,18 @@ bindkey -v
 fpath+=~/.zfunc
 
 # pyenv
+export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
+# Preserve R libraries accros sessions
+export R_LIBS_USER=/home/mt/Templates/r-libs
+
+
+# Google utils
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/mt/Templates/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mt/Templates/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/mt/Templates/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mt/Templates/google-cloud-sdk/completion.zsh.inc'; fi
