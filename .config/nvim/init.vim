@@ -5,14 +5,13 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'jalvesaq/nvim-r'
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'jalvesaq/vimcmdline'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
