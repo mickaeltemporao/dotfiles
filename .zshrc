@@ -137,3 +137,7 @@ if [ -f '/home/mt/Templates/google-cloud-sdk/completion.zsh.inc' ]; then . '/hom
 # Welcome Screen
 pfetch
 
+# Load syntax highlighting; should be last.
+# Requires: https://github.com/zdharma/fast-syntax-highlighting
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
