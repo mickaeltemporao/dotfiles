@@ -88,11 +88,32 @@ gitup () {
 export GPG_TTY=$(tty)
 # export GNUPGHOME="$HOME/.config/gnupg"
 
-# Welcome Screen
-# neofetch --disable gpu --color_blocks off --gtk3 off
-
-# vi-mode
+# vi-mode config
 bindkey -v
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;      # block
+        viins|main) echo -ne '\e[5 q';; # beam
+    esac
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # TODO:
 fpath+=~/.zfunc
@@ -106,10 +127,13 @@ eval "$(pyenv init -)"
 # Preserve R libraries accros sessions
 export R_LIBS_USER=/home/mt/Templates/r-libs
 
-
 # Google utils
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/mt/Templates/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mt/Templates/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/mt/Templates/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mt/Templates/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Welcome Screen
+pfetch
+
