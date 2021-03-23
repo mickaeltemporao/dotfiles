@@ -17,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'vimwiki/vimwiki'
 
 " Initialize plugin system
@@ -183,6 +184,9 @@ let R_cmd = "R"
 let R_hl_term = 0
 let R_args = []  " if you had set any
 let R_bracketed_paste = 1
+" Press the space bar to send lines and selection to R:
+vmap <C-Space> <Plug>RDSendSelection
+nmap <C-Space> <Plug>RDSendLine
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " python environnment setup
