@@ -14,6 +14,7 @@ alias vimdiff="nvim -d"
 alias cat="highlight -l -O ansi --force"
 alias noise="play -n -q synth 2:0:0 brownnoise synth pinknoise mix synth sine amod 0 10 &"
 alias cours="cd ~/Documents/scpobx/cours"
+alias open=xdg-open
 
 # CSV quicklook
 csv () {
