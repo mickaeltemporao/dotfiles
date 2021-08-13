@@ -2,12 +2,13 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'arcticicestudio/nord-vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'chrisbra/csv.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 Plug 'jalvesaq/vimcmdline'
 Plug 'jamessan/vim-gnupg'
+Plug 'juliaeditorsupport/julia-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
